@@ -180,6 +180,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -202,6 +210,12 @@
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
           <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年6月29日 凌晨
+                
+              </p>
             
             <article class="markdown-body">
               <h1 id="暂存一下链接，明天装修本站用"><a href="#暂存一下链接，明天装修本站用" class="headerlink" title="暂存一下链接，明天装修本站用"></a>暂存一下链接，明天装修本站用</h1><h2 id="今天睡了一天，拖延症晚期"><a href="#今天睡了一天，拖延症晚期" class="headerlink" title="今天睡了一天，拖延症晚期"></a>今天睡了一天，拖延症晚期</h2><p><a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="noopener">fluid配置教程</a></p>
@@ -243,29 +257,6 @@
               <div class="comments" id="comments">
                 
                 
-  <div class="disqus" style="width:100%">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-      function loadDisqus() {
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/child/2020/06/29/links/';
-          this.page.identifier = '/2020/06/29/links/';
-        };
-        (function () {
-          var d = document,
-            s = d.createElement('script');
-          s.src = '//' + '' + '.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      }
-      createObserver(loadDisqus, 'disqus_thread');
-    </script>
-    <noscript>Please enable JavaScript to view the
-      <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noopener">comments powered by Disqus.</a>
-    </noscript>
-  </div>
-
 
               </div>
             
@@ -441,8 +432,10 @@
   <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
   <script>
     anchors.options = {
-      placement: "right",
+      placement: "left",
       visible: "hover",
+      
+      icon: "§"
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
