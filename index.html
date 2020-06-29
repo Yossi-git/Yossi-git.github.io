@@ -299,7 +299,8 @@ coding pages最新网站搭建教程
   <footer class="mt-5">
     <div class="text-center py-3">
         <div>
-            <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+            <!-- <a href="https://hexo.io" target="_blank" rel="nofollow noopener"> -->
+            <span>@2020</span></a>
             <i class="iconfont icon-love"></i>
             <a href="https://github.com/Yossi-git" target="_blank" rel="nofollow noopener">
                 <span>Yossi</span></a>
@@ -330,7 +331,7 @@ coding pages最新网站搭建教程
                     if (String(snum).length == 1) {
                         snum = "0" + snum;
                     }
-                    document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp" + dnum + "&nbsp天";
+                    document.getElementById("timeDate").innerHTML = "本站已经安全运行&nbsp" + dnum + "&nbsp天";
                     document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
                 }
                 setInterval("createtime()", 250);
@@ -366,16 +367,7 @@ coding pages最新网站搭建教程
             
 
                 
-                        <p id="hitokoto">:D 获取中...</p>
-                        <script>
-                            fetch('https://v1.hitokoto.cn')
-                                .then(response => response.json())
-                                .then(data => {
-                                    const hitokoto = document.getElementById('hitokoto')
-                                    hitokoto.innerText = data.hitokoto
-                                })
-                                .catch(console.error)
-                        </script>
+
     </div>
 </footer>
 
