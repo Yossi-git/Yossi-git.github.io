@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>hexo搭建（GitHub Gitee Coding三线部署）教程</title>
+    <link href="/2020/06/30/hexo%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/"/>
+    <url>/2020/06/30/hexo%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>hexo搭建教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>links</title>
     <link href="/2020/06/29/links/"/>
     <url>/2020/06/29/links/</url>
@@ -29,23 +54,23 @@
   
   
   <entry>
-    <title>first</title>
+    <title>hexo搭建遇到的问题</title>
     <link href="/2020/06/27/first/"/>
     <url>/2020/06/27/first/</url>
     
-    <content type="html"><![CDATA[<h1 id="占坑"><a href="#占坑" class="headerlink" title="占坑"></a>占坑</h1><h2 id="明天再来写今天踩的坑"><a href="#明天再来写今天踩的坑" class="headerlink" title="明天再来写今天踩的坑"></a>明天再来写今天踩的坑</h2><p>github pages 今天又抽筋访问速度及其慢，跟着教程使用多线程网站部署，然而coding网站大改，吐了，gitee自定义域名和自动部署上线都要充会员，没办法，当作备用吧，gitee本站备用地址：<a href="https://yossi.gitee.io/" target="_blank" rel="noopener">https://yossi.gitee.io/</a></p><p>国外走github线路，国内走coding，访问速度终于上去了。</p><p> coding pages强制https协议出错，明天再来查是哪儿出问题了，目前使用的是http协议上线，不会有人会攻击我这个渣渣网站吧，不会吧，不会吧！</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="明天再来写今天踩的坑"><a href="#明天再来写今天踩的坑" class="headerlink" title="明天再来写今天踩的坑"></a>明天再来写今天踩的坑</h1><p>​        Github Pages 今天又抽筋访问速度及其慢，跟着教程使用多线路网站部署，然而Coding网站大改，使用习惯和其他Git网站不一样，不太习惯，gitee自定义域名和自动部署上线都要充会员，没办法，当作备用吧，gitee本站备用地址：<a href="https://yossi.gitee.io/" target="_blank" rel="noopener">https://yossi.gitee.io/</a></p><p>国外走Github线路，国内走Coding线路，访问速度终于上去了。</p><pre><code>Coding pages强制https协议出错，明天再来查是哪儿出问题了，目前使用的是http协议上线。</code></pre><h2 id="关于Coding-Pages-强制https协议失败的原因"><a href="#关于Coding-Pages-强制https协议失败的原因" class="headerlink" title="关于Coding Pages 强制https协议失败的原因"></a>关于Coding Pages 强制https协议失败的原因</h2><p>​        是我的Coding pages域名证书申请失败了，因为我阿里云DNS域名解析先绑定的github pages并且打开了https协议，所以在Coding pages里面申请域名证书验证域名所有权时，会定位到已经有SSL证书的Github Pages 的主机上，导致Coding的SSL证书申请失败。</p><h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>​        先去域名DNS解析控制台把GitHub Pages 的解析暂停，然后重新申请Coding Pages的证书，就可以打开强制https了。</p><p>​        注意：今后在写博客引用资源的时候，要注意所有的网络资源URL必须上https协议开头的，不然浏览器会提示网站不安全无法打开。</p>]]></content>
     
     
     <categories>
       
-      <category>测试</category>
+      <category>hexo搭建教程</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>随机</tag>
+      <tag>一些坑</tag>
       
     </tags>
     
