@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Yossi">
   <meta name="keywords" content="">
-  <title>标签 - hexo - YoX</title>
+  <title>标签 - Hexo - YoX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -130,7 +130,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/tags.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -222,10 +222,15 @@
     <div class="text-center py-3">
         <div>
             <!-- <a href="https://hexo.io" target="_blank" rel="nofollow noopener"> -->
-            <span>©Copyright@2020</span></a>
+            <span>@2020</span>
             <i class="iconfont icon-love"></i>
-            <a href="https://github.com/Yossi-git" target="_blank" rel="nofollow noopener">
-                <span>Yossi</span></a>
+            <a href="https://github.com/Yossi-git" target="_blank" style="color:rgb(0, 119, 167);text-decoration:underline;" rel="nofollow noopener">Yossi</a>
+        </div>
+        <div>
+            <span>由</span>
+            <a href="https://hexo.io/zh-cn/" target="_blank" style="color:rgb(0, 180, 250);text-decoration:underline;" rel="nofollow noopener">Hexo</a>
+            <span>驱动｜主题-</span>
+            <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" style="color:rgb(0, 180, 250);text-decoration:underline;" rel="nofollow noopener">Fluid</a>
         </div>
         <div>
             <span id="timeDate">载入天数...</span>
@@ -435,7 +440,7 @@
       if ('false' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/tags/hexo/index.html');
+          var target = decodeURI('/tags/Hexo/index.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -504,7 +509,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - hexo&nbsp;",
+        "标签 - Hexo&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 90,
