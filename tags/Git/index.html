@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Yossi">
   <meta name="keywords" content="">
-  <title>归档 - YoX</title>
+  <title>标签 - Git - YoX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -42,7 +42,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -130,7 +130,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/arch.jpg') no-repeat center center;
+         style="background: url('/img/tags.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -160,22 +160,16 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 8 篇文章</p>
+  <p class="h4">共计 1 篇文章</p>
   <hr>
   
     
       
       <p class="h5">2020</p>
     
-    <a href="/2020/06/30/hexo%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">个人博客网站搭建教程</span>
-      <span style="float: right;">06-30</span>
-    </a>
-  
-    
-    <a href="/2020/06/27/first/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">博客网站折腾日记（一）</span>
-      <span style="float: right;">06-27</span>
+    <a href="/2020/07/11/Git%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Git常用指令</span>
+      <span style="float: right;">07-11</span>
     </a>
   
 </div>
@@ -446,7 +440,7 @@
       if ('false' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/archives/2020/06/index.html');
+          var target = decodeURI('/tags/Git/index.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -515,7 +509,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "标签 - Git&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 90,

@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Yossi">
   <meta name="keywords" content="">
-  <title>C++的引用与指针的区别 - YoX</title>
+  <title>用四个命令总结 Git 的所有套路 - YoX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-03 09:24">
-      2020年7月3日 上午
+    <time datetime="2020-07-12 09:24">
+      2020年7月12日 上午
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      2.8k 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      30
+      31
        分钟
     </span>
   
@@ -213,133 +213,159 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年7月3日 下午
+                  本文最后更新于：2020年7月14日 下午
                 
               </p>
             
             <article class="markdown-body">
-              <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>引用(&amp;)是对某个<strong>变量</strong>取一个别名，对引用对操作和直接操作<strong>变量</strong>效果一样；</p>
-<div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;
-   <span class="hljs-keyword">int</span> a;
-   <span class="hljs-keyword">int</span> &amp;ra = a; 
-   ra = <span class="hljs-number">1</span>;
-   <span class="hljs-built_in">cout</span>&lt;&lt;a&lt;&lt;ra&lt;&lt;<span class="hljs-built_in">endl</span>;
-   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
-<p>结果：</p>
-<div class="hljs"><pre><code class="hljs c"><span class="hljs-number">1</span> <span class="hljs-number">1</span></code></pre></div>
-<p>指针(*)是对某个<strong>变量</strong>的地址变量，对地址内容进行操作和直接操作<strong>变量</strong>效果一样；</p>
-<div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;
-    <span class="hljs-keyword">int</span> a;
-    <span class="hljs-keyword">int</span>* p = &amp;a;
-    *p = <span class="hljs-number">1</span>;
-    <span class="hljs-built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="hljs-built_in">endl</span>;
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
-<p>结果：</p>
-<div class="hljs"><pre><code class="hljs c"><span class="hljs-number">1</span></code></pre></div>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>(0) <strong>声明一个引用，不是定义了一个新变量，只是一个别名，所以它本身不是一种数据类型，不会占用内存，但是指针属于指针变量，会占用内存，这就是引用的优点。使用引用传递函数的参数，在内存中并没有产生实参的副本，它是直接对实参操作；而使用一般变量传递函数的参数，当发生函数调用时，需要给形参分配存储单元，形参变量是实参变量的副本；如果传递的是对象，还将调用拷贝构造函数。因此，当参数传递的数据较大时，用引用比用一般变量传递参数的效 率和所占空间都好。使用指针作为函数的参数虽然也能达到与使用引用的效果，但是，在被调函数中同样要给形参分配存储单元，且需要重复使用”*指针变量名”的形式进行运算，这很容易产生错误且程序的阅读性较差；另一方面，在主调函数的调用点处，必须用变量的地址作为实参。而引用更容易使用，更清晰。</strong><br>(1) &amp;在此不是求地址运算符，而是引用标识符；<br>(2) 声明引用时，必须同时对其初始化；<br>(3) 使用引用后，相当于变量内存上有两个变量名，<code>ra=1</code>等价于<code>a=1</code>而使用指针是指针变量指向变量地址<code>*p=1</code>等价于<code>a=1</code>；  </p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200703104540.png" srcset="/img/loading.gif" alt="image-20200703104539112"><br>(4) 不能建立数组的引用，因为数组是由若干个元素所组成的集合，无法创建一个数组的别名；  </p>
-<h1 id="引用的应用"><a href="#引用的应用" class="headerlink" title="引用的应用"></a>引用的应用</h1><h2 id="1、作为参数"><a href="#1、作为参数" class="headerlink" title="1、作为参数"></a>1、作为参数</h2><p>引用的一个重要作用就是作为函数的参数。以前的C语言中函数参数传递是值传递，如果有大块数据作为参数传递的时候，采用的方案往往是指针，因为这样可以避免将整块数据全部压栈，可以提高程序的效率。但是现在（C++中）又增加了一种同样有效率的选择（在某些特殊情况下又是必须的选择），就是引 用，比起指针，引用不占用任何存储单元，更加高效。<br>引用：</p>
-<div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;a, <span class="hljs-keyword">int</span> &amp;b)</span></span>&#123;
-    <span class="hljs-keyword">int</span> temp;
-    temp = a;
-    a = b;
-    b = temp; 
-&#125;</code></pre></div>
-<p>指针：</p>
-<div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>* p1, <span class="hljs-keyword">int</span>* p2)</span></span>&#123;
-    <span class="hljs-keyword">int</span> temp = *p1;
-    *p1 = *p2;
-    *p2 = temp;
-&#125;</code></pre></div>
-<p>上面使用指针和引用的函数效果一样。</p>
-<h2 id="2、常引用"><a href="#2、常引用" class="headerlink" title="2、常引用"></a>2、常引用</h2><p>常引用声明方式：<code>const int &amp;ra = a；</code></p>
-<p>用这种方式声明的引用，不能通过改变引用而对目标变量进行修改，只能直接修改目标变量的值；</p>
-<div class="hljs"><pre><code class="hljs c"><span class="hljs-keyword">int</span> a;
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;ra = a;
-ra = <span class="hljs-number">1</span>; <span class="hljs-comment">//无法修改a的值</span>
-a = <span class="hljs-number">1</span>；<span class="hljs-comment">//ra=a=1</span></code></pre></div>
+              <p>使用Git搞不明白的一个重要原因就是，命令的功能太杂，有时候一个需求可以用好几种命令解决，而且有的命令还有别名。这导致什么问题呢，我在网上找到的答案五花八门，竟然都能达成目的，难以找到规律，毫无套路可言。对于我这种不喜欢动脑子，只喜欢玩套路的人来说，简直不能接受。</p>
+<a id="more"></a>
 
-<p>引用型参数应该在能被定义为const的情况下，尽量定义为const；</p>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">//定义以下函数：</span>
-<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span></span>;
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">(<span class="hljs-built_in">string</span> &amp;s)</span></span>;
+<div class="note note-success">
+            <p>转载自公众号：<a href="https://mp.weixin.qq.com/s/VdeQpFCL3GGsfOKrIRW6Hw" target="_blank" rel="noopener">labuladong</a> </p>
+          </div> 
 
-<span class="hljs-comment">//进行如下操作都是非法的</span>
-bar(foo());
-bar(<span class="hljs-string">"hello world!"</span>)
-<span class="hljs-comment">//调用foo()字符串类型函数和使用字符串，C++会创建一个临时const对象，而bar()的形参是string非const类型</span></code></pre></div>
+<hr>
+<p>以前我用 Git，就知道<code>add .</code>，然后<code>commit -m</code>，最后<code>push origin master</code>一套带走，或者就是把 Git 作为下载器，去<code>clone</code>别人的项目。但是在工作中呢，和别人一起开发代码，就需要处理一些复杂情况，比如解决冲突，比如手残恢复，等等等实用场景，这些我在后文都会列举。</p>
+<p>对于工具的学习，我认为应该多做减法，只捡最有用的学，那些奇技淫巧不学也罢，应该把时间投入更有价值的事情中。</p>
+<p><strong>所以本文不是一个大而全 Git 命令的使用手册，而是根据实际工作中最常见问题，提供小而美的解决方案，仅仅涉及四个命令：<code>add</code>，<code>commit</code>，<code>reset</code>，<code>checkout</code></strong>。</p>
+<p>PS： <a href="http://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484977&idx=1&sn=2c79a96aa3caf6acba22f8c0c114d676&chksm=9bd7f839aca0712f044a11e1c582cd5d413bb676de3f889dfc73dcd0be473d0756d98456dfde&scene=21#wechat_redirect" target="_blank" rel="noopener">一起刷题学习 Git/SQL/正则表达式 </a>介绍了一个可视化学习 Git 的网站，非常优秀，值得一刷。</p>
+<h3 id="一、预备知识"><a href="#一、预备知识" class="headerlink" title="一、预备知识"></a>一、预备知识</h3><p>首先，在进入 Git 的各种神仙操作之前，<strong>一定要明白 git 的三个「分区」是什么，否则的话你一定没办法真正理解 Git 的原理</strong>。</p>
+<p>本地 Git 的三个分区分别是：<code>working directory</code>，<code>stage/index area</code>，<code>commit history</code>。</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714161344.png" srcset="/img/loading.gif" alt="https://rogerdudler.github.io/git-guide"><a href="https://rogerdudler.github.io/git-guide" target="_blank" rel="noopener">https://rogerdudler.github.io/git-guide</a></p>
+<p><strong><code>working directory</code>是「工作目录」，也就是我们肉眼能够看到的文件</strong>，后文我们称其为<code>work dir</code>区。</p>
+<p>当我们在<code>work dir</code>中<strong>执行<code>git add</code>相关命令后，就会把<code>work dir</code>中的修改添加到「暂存区」<code>stage area</code>（或者叫<code>index area</code>）中去</strong>，后文我们称暂存区为<code>stage</code><br>区。</p>
+<p>当<code>stage</code>中存在修改时，我们<strong>使用<code>git commit</code>相关命令之后，就会把<code>stage</code>中的修改保存到「提交历史」<code>commit history</code>中</strong>，也就是<code>HEAD</code>指针指向的位置。后文我们称「提交历史」为<code>history</code>区。</p>
+<p>关于<code>commit history</code>我们多说几句，任何修改只要进入<code>commit history</code>，基本可以认为永远不会丢失了。每个<code>commit</code>都有一个唯一的 Hash 值，我们经常说的<code>HEAD</code>或者<code>master</code>分支，都可以理解为一个指向某个<code>commit</code>的指针。</p>
+<p><code>work dir</code>和<code>stage</code>区域的状态，可以通过命令<code>git status</code>来查看，<code>history</code>区域的提交历史可以通过<code>git log</code>命令来查看。</p>
+<p>好的，如果上面的内容你都能够理解，那么本文就完全围绕这三个概念展开，下面就是一个「状态转移图」：</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714161345.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<h3 id="二、本地-Git-极简教程"><a href="#二、本地-Git-极简教程" class="headerlink" title="二、本地 Git 极简教程"></a>二、本地 Git 极简教程</h3><p><strong>需求一，如何把<code>work dir</code>中的修改加入<code>stage</code></strong>。</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714161346.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p>这个是最简单，使用 <strong><code>git add</code></strong> 相关的命令就行了。顺便一提，<code>add</code>有个别名叫做<code>stage</code>，也就是说你可能见到<code>git stage</code>相关的命令，这个命令和<code>git add</code>命令是完全一样的。</p>
+<p><strong>风险等级：无风险。</strong></p>
+<p>理由：不会改变任或撤销任何已作出的修改，而且还会将<code>work dir</code>中未追踪的修改（Untracked file）添加到暂存区<code>stage</code>中进行追踪。</p>
+<p><strong>需求二，如何把<code>stage</code>中的修改还原到<code>work dir</code>中</strong>。</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714161347.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p>这个需求很常见，也很重要，比如我先将当前<code>work dir</code>中的修改添加到<code>stage</code>中，然后又对<code>work dir</code>中的文件进行了修改，但是又后悔了，如何把<code>work dir</code>中的全部或部分文件还原成<code>stage</code>中的样子呢？</p>
+<p>来个实际场景，我先新建两个文件，然后把他们都加到<code>stage</code>：</p>
+<div class="hljs"><pre><code class="hljs livecodeserver">$ touch <span class="hljs-keyword">a</span>.txt b.txt
+$ git <span class="hljs-built_in">add</span> .
+$ git status
+On branch master
+Changes <span class="hljs-built_in">to</span> be committed:
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   <span class="hljs-keyword">a</span>.txt
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   b.txt</code></pre></div>
 
-<h2 id="3、引用作为返回值"><a href="#3、引用作为返回值" class="headerlink" title="3、引用作为返回值"></a>3、引用作为返回值</h2><p><code>类型标识符 &amp;函数名(形参){}</code></p>
-<h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><p>（1）以引用返回函数值，定义函数时需要在函数名前加&amp;；</p>
-<p>（2）用引用返回一个函数值最大的好处是，在内存中不会产生返回值的副本，提高效率；</p>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<p>然后我又修改了<code>a.txt</code>文件：</p>
+<div class="hljs"><pre><code class="hljs livecodeserver">$ echo hello world &gt;&gt; <span class="hljs-keyword">a</span>.txt
+$ git status
+On branch master
+Changes <span class="hljs-built_in">to</span> be committed:
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   <span class="hljs-keyword">a</span>.txt
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   b.txt
 
-<span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">fn1</span><span class="hljs-params">(<span class="hljs-keyword">float</span> r)</span> <span class="hljs-comment">//定义函数fn1，它以返回值的方法返回函数值</span></span>
-<span class="hljs-function"></span>&#123;
-　temp = (<span class="hljs-keyword">float</span>)(r*r*<span class="hljs-number">3.14</span>);
-　<span class="hljs-keyword">return</span> temp;
-&#125;
+Changes <span class="hljs-keyword">not</span> staged <span class="hljs-keyword">for</span> commit:
+    modified:   <span class="hljs-keyword">a</span>.txt</code></pre></div>
 
-<span class="hljs-function"><span class="hljs-keyword">float</span> &amp;<span class="hljs-title">fn2</span><span class="hljs-params">(<span class="hljs-keyword">float</span> r)</span> <span class="hljs-comment">//定义函数fn2，它以引用方式返回函数值</span></span>
-<span class="hljs-function"></span>&#123;
-　temp = (<span class="hljs-keyword">float</span>)(r*r*<span class="hljs-number">3.14</span>);
-　<span class="hljs-keyword">return</span> temp;
-&#125;
+<p>现在，我后悔了，我认为不应该修改<code>a.txt</code>，我想把它还原成<code>stage</code>中的空文件，怎么办？</p>
+<p>答案是，使用 <strong><code>checkout</code></strong> 命令：</p>
+<div class="hljs"><pre><code class="hljs livecodeserver">$ git checkout <span class="hljs-keyword">a</span>.txt
+Updated <span class="hljs-number">1</span> path <span class="hljs-built_in">from</span> <span class="hljs-keyword">the</span> index
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> <span class="hljs-comment">//主函数</span></span>
-<span class="hljs-function"></span>&#123;
-　<span class="hljs-keyword">float</span> a = fn1(<span class="hljs-number">10.0</span>); <span class="hljs-comment">//第1种情况，系统生成要返回值的副本（即临时变量）</span>
-　<span class="hljs-keyword">float</span> &amp;b = fn1(<span class="hljs-number">10.0</span>); 
- <span class="hljs-comment">/*第2种情况，可能会出错（不同C++系统有不同规定)不能从被调函数中返回一个临时变量或局部变量的引用*/</span>
-　<span class="hljs-keyword">float</span> c = fn2(<span class="hljs-number">10.0</span>); 
-  <span class="hljs-comment">//第3种情况，系统不生成返回值的副本可以从被调函数中返回一个全局变量的引用</span>
-　<span class="hljs-keyword">float</span> &amp;d = fn2(<span class="hljs-number">10.0</span>);
-  <span class="hljs-comment">//第4种情况，系统不生成返回值的副本可以从被调函数中返回一个全局变量的引用</span>
-　<span class="hljs-built_in">cout</span>&lt;&lt;a&lt;&lt;c&lt;&lt;d&lt;&lt;<span class="hljs-built_in">endl</span>;
-  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
+$ git status
+On branch master
+Changes <span class="hljs-built_in">to</span> be committed:
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   <span class="hljs-keyword">a</span>.txt
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   b.txt</code></pre></div>
 
-<p>引用作为返回值，必须遵守以下规则：</p>
-<p>（1）不能返回局部变量的引用。这条可以参照Effective C++[1]的Item 31。主要原因是局部变量会在函数返回后被销毁，因此被返回的引用就成为了”无所指”的引用，程序会进入未知状态。</p>
-<p>（2）不能返回函数内部new分配的内存的引用。这条可以参照Effective C++[1]的Item 31。虽然不存在局部变量的被动销毁问题，可对于这种情况（返回函数内部new分配内存的引用），又面临其它尴尬局面。例如，被函数返回的引用只是作为一 个临时变量出现，而没有被赋予一个实际的变量，那么这个引用所指向的空间（由new分配）就无法释放，造成memory leak。</p>
-<p>（3）可以返回类成员的引用，但最好是const。这条原则可以参照Effective C++[1]的Item 30。主要原因是当对象的属性是与某种业务规则（business rule）相关联的时候，其赋值常常与某些其它属性或者对象的状态有关，因此有必要将赋值操作封装在一个业务规则当中。如果其它对象可以获得该属性的非常 量引用（或指针），那么对该属性的单纯赋值就会破坏业务规则的完整性。</p>
-<p>（4）引用与一些操作符的重载：</p>
-<p>流操作符&lt;&lt;和&gt;&gt;，这两个操作符常常希望被连续使用，例如：cout &lt;&lt; “hello” &lt;&lt; endl;　因此这两个操作符的返回值应该是一个仍然支持这两个操作符的流引用。可选的其它方案包括：返回一个流对象和返回一个流对象指针。但是对于返回 一个流对象，程序必须重新（拷贝）构造一个新的流对象，也就是说，连续的两个&lt;&lt;操作符实际上是针对不同对象的！这无法让人接受。对于返回一 个流指针则不能连续使用&lt;&lt;操作符。因此，返回一个流对象引用是惟一选择。这个唯一选择很关键，它说明了引用的重要性以及无可替代性，也许这 就是C++语言中引入引用这个概念的原因吧。 赋值操作符=。这个操作符象流操作符一样，是可以连续使用的，例如：x = j = 10;或者(x=10)=100;赋值操作符的返回值必须是一个左值，以便可以被继续赋值。因此引用成了这个操作符的惟一返回值选择。</p>
-<p>测试用返回引用的函数值作为赋值表达式的左值。</p>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<p>看到了么，输出显示从<code>index</code>区（也就是<code>stage</code>区）更新了一个文件，也就是把<code>work dir</code>中<code>a.txt</code>文件还原成了<code>stage</code>中的状态（一个空文件）。</p>
+<p>当然，如果<code>work dir</code>中被修改的文件很多，可以使用通配符全部恢复成<code>stage</code>：</p>
+<div class="hljs"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git checkout .</code></pre></div>
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> &amp;<span class="hljs-title">put</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>;
-<span class="hljs-keyword">int</span> vals[<span class="hljs-number">10</span>];
-<span class="hljs-keyword">int</span> error=<span class="hljs-number">-1</span>;
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
-<span class="hljs-function"></span>&#123;
-<span class="hljs-built_in">put</span>(<span class="hljs-number">0</span>)=<span class="hljs-number">10</span>; <span class="hljs-comment">//以put(0)函数值作为左值，等价于vals[0]=10;</span>
-<span class="hljs-built_in">put</span>(<span class="hljs-number">9</span>)=<span class="hljs-number">20</span>; <span class="hljs-comment">//以put(9)函数值作为左值，等价于vals[9]=20;</span>
-<span class="hljs-built_in">cout</span>&lt;&lt;vals[<span class="hljs-number">0</span>];
-<span class="hljs-built_in">cout</span>&lt;&lt;vals[<span class="hljs-number">9</span>];
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">int</span> &amp;<span class="hljs-title">put</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>
-<span class="hljs-function"></span>&#123;
-<span class="hljs-keyword">if</span> (n&gt;=<span class="hljs-number">0</span> &amp;&amp; n&lt;=<span class="hljs-number">9</span> ) <span class="hljs-keyword">return</span> vals[n];
-<span class="hljs-keyword">else</span> &#123; <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"subscript error"</span>; <span class="hljs-keyword">return</span> error; &#125;
-&#125;</code></pre></div>
+<p>有一点需要指出的是，<code>checkout</code>命令只会把被「修改」的文件恢复成<code>stage</code>的状态，如果<code>work dir</code>中新增了新文件，你使用<code>git checkout .</code>是不会删除新文件的。</p>
+<p><strong>风险等级：中风险。</strong></p>
+<p>理由：在<code>work dir</code>做出的「修改」会被<code>stage</code>覆盖，无法恢复。所以使用该命令你应该确定<code>work dir</code>中的修改可以抛弃。</p>
+<p><strong>需求三，将<code>stage</code>区的文件添加到<code>history</code>区</strong>。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/gibkIz0MVqdGUXVS0JZdzXaZFmfB1ILlZQAmj03EP2xQaaQaQwmLvWVsfKIxueaicBw096XRhpDjobcMJUV9Dd6g/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" alt="img"></p>
+<p>很简单，就是 <strong><code>git commit</code></strong> 相关的命令，一般我们就是这样用的：</p>
+<div class="hljs"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git commit -m <span class="hljs-string">'一些描述'</span></code></pre></div>
 
-<p>（5）在另外的一些操作符中，却千万不能返回引用：+-*/ 四则运算符。它们不能返回引用，Effective C++[1]的Item23详细的讨论了这个问题。主要原因是这四个操作符没有side effect，因此，它们必须构造一个对象作为返回值，可选的方案包括：返回一个对象、返回一个局部变量的引用，返回一个new分配的对象的引用、返回一 个静态对象引用。根据前面提到的引用作为返回值的三个规则，第2、3两个方案都被否决了。静态对象的引用又因为((a+b) == (c+d))会永远为true而导致错误。所以可选的只剩下返回一个对象了。</p>
-<h2 id="4、引用和多态"><a href="#4、引用和多态" class="headerlink" title="4、引用和多态"></a>4、引用和多态</h2><p>引用是除指针外另一个可以产生多态效果的手段。这意味着，一个基类的引用可以指向它的派生类实例。</p>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> 　<span class="hljs-title">A</span>;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> 　<span class="hljs-title">B</span>：<span class="hljs-title">public</span> <span class="hljs-title">A</span>&#123;</span>……&#125;;
-B 　b;
-A 　&amp;Ref = b; <span class="hljs-comment">// 用派生类对象初始化基类对象的引用</span></code></pre></div>
+<p>再简单提一些常见场景， 比如说<code>commit</code>完之后，突然发现一些错别字需要修改，又不想为改几个错别字而新开一个<code>commit</code>到<code>history</code>区，那么就可以使用下面这个命令：</p>
+<div class="hljs"><pre><code class="hljs pgsql">$ git <span class="hljs-keyword">commit</span> <span class="hljs-comment">--amend</span></code></pre></div>
 
-<p>Ref 只能用来访问派生类对象中从基类继承下来的成员，是基类引用指向派生类。如果A类中定义有虚函数，并且在B类中重写了这个虚函数，就可以通过Ref产生多态效果。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>（1）在引用的使用中，单纯给某个变量取个别名是毫无意义的，引用的目的主要用于在函数参数传递中，解决大块数据或对象的传递效率和空间不如意的问题。</p>
-<p>（2）用引用传递函数的参数，能保证参数传递中不产生副本，提高传递的效率，且通过const的使用，保证了引用传递的安全性。</p>
-<p>（3）引用与指针的区别是，指针通过某个指针变量指向一个对象后，对它所指向的变量间接操作。程序中使用指针，程序的可读性差；而引用本身就是目标变量的别名，对引用的操作就是对目标变量的操作。</p>
-<p>（4）使用引用的时机。流操作符&lt;&lt;和&gt;&gt;、赋值操作符=的返回值、拷贝构造函数的参数、赋值操作符=的参数、其它情况都推荐使用引用。</p>
+<p>这样就是把错别字的修改和之前的那个<code>commit</code>中的修改合并，作为一个<code>commit</code>提交到<code>history</code>区。</p>
+<p><strong>风险等级：无风险。</strong></p>
+<p>理由：不会改变任或撤销任何已作出的修改，而且还会将<code>stage</code>区的修改加入<code>history</code>区并分配一个 Hash 值。只要不乱动本地的<code>.git</code>文件夹，进入<code>history</code>的修改就永远不会丢失。</p>
+<p><strong>需求四，将<code>history</code>区的文件还原到<code>stage</code>区</strong>。</p>
+<p><img src="/.com//gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" alt="img"></p>
+<p>这个需求很常见，比如说我用了一个<code>git add .</code>一股脑把所有修改加入<code>stage</code>，但是突然想起来文件<code>a.txt</code>中的代码我还没写完，不应该把它<code>commit</code>到<code>history</code>区，所以我得把它从<code>stage</code>中撤销，等后面我写完了再提交。</p>
+<div class="hljs"><pre><code class="hljs routeros">$ echo<span class="hljs-built_in"> aaa </span>&gt;&gt; a.txt; echo bbb &gt;&gt; b.txt;
+$ git <span class="hljs-builtin-name">add</span> .
+$ git status
+On branch master
+Changes <span class="hljs-keyword">to</span> be committed:
+    modified:   a.txt
+    modified:   b.txt</code></pre></div>
+
+<p>如何把<code>a.txt</code>从<code>stage</code>区还原出来呢？可以使用 <strong><code>git reset</code></strong> 命令：</p>
+<div class="hljs"><pre><code class="hljs sql">$ git <span class="hljs-keyword">reset</span> a.txt
+
+$ git <span class="hljs-keyword">status</span>
+<span class="hljs-keyword">On</span> branch <span class="hljs-keyword">master</span>
+Changes <span class="hljs-keyword">to</span> be committed:
+    modified:   b.txt
+
+Changes <span class="hljs-keyword">not</span> staged <span class="hljs-keyword">for</span> <span class="hljs-keyword">commit</span>:
+    modified:   a.txt</code></pre></div>
+
+<p>你看，这样就可以把<code>a.txt</code>文件从<code>stage</code>区移出，这时候进行<code>git commit</code>相关的操作就不会把这个文件一起提交到<code>history</code>区了。</p>
+<p>上面的这个命令是一个简写，实际上<code>reset</code>命令的完整写法如下：</p>
+<div class="hljs"><pre><code class="hljs pgsql">$ git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--mixed HEAD a.txt</span></code></pre></div>
+
+<p>其中，<code>mixed</code>是一个模式（mode）参数，如果<code>reset</code>省略这个选项的话默认是<code>mixed</code>模式；<code>HEAD</code>指定了一个历史提交的 hash 值；<code>a.txt</code>指定了一个或者多个文件。</p>
+<p><strong>该命令的自然语言描述是：不改变<code>work dir</code>中的任何数据，将<code>stage</code>区域中的<code>a.txt</code>文件还原成<code>HEAD</code>指向的<code>commit history</code>中的样子</strong>。就相当于把对<code>a.txt</code>的修改从<code>stage</code>区撤销，但依然保存在<code>work dir</code>中，变为<code>unstage</code>的状态。</p>
+<p><strong>风险等级：低风险。</strong></p>
+<p>理由：不会改变<code>work dir</code>中的数据，会改变<code>stage</code>区的数据，所以应确保<code>stage</code>中被改动数据是可以抛弃的。</p>
+<p><strong>需求五，将<code>work dir</code>的修改提交到<code>history</code>区</strong>。</p>
+<p><img src="/.com//gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" alt="img"></p>
+<p>这个需求很简单啦，先<code>git add</code>然后<code>git commit</code>就行了，或者一个快捷方法是使用命令<code>git commit -a</code>。</p>
+<p><strong>风险等级：无风险。</strong></p>
+<p>理由：显而易见。</p>
+<p><strong>需求六，将<code>history</code>区的历史提交还原到<code>work dir</code>中</strong>。</p>
+<p><img src="/.com//gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" alt="img"></p>
+<p>这个场景，我说一个极端一点的例子：比如我从 GitHub 上<code>clone</code>了一个项目，然后乱改了一通代码，结果发现我写的代码根本跑不通，于是后悔了，干脆不改了，我想恢复成最初的模样，怎么办？</p>
+<p>依然是使用<code>checkout</code>命令，但是和之前的使用方式有一些不同：</p>
+<div class="hljs"><pre><code class="hljs angelscript">$ git checkout HEAD .
+Updated <span class="hljs-number">12</span> paths <span class="hljs-keyword">from</span> d480c4f</code></pre></div>
+
+<p>这样，<code>work dir</code>和<code>stage</code>中所有的「修改」都会被撤销，恢复成<code>HEAD</code>指向的那个<code>history commit</code>。</p>
+<p>注意，类似之前通过<code>stage</code>恢复<code>work dir</code>的<code>checkout</code>命令，这里撤销的也只是修改，新增的文件不会被撤销。</p>
+<p>当然，只要找到任意一个<code>commit</code>的 HASH 值，<code>checkout</code>命令可就以将文件恢复成任一个<code>history commit</code>中的样子：</p>
+<div class="hljs"><pre><code class="hljs angelscript">$ git checkout <span class="hljs-number">2</span>bdf04a some_test.go
+Updated <span class="hljs-number">1</span> path <span class="hljs-keyword">from</span> <span class="hljs-number">2</span>bdf04a
+# 前文的用法显示 update <span class="hljs-keyword">from</span> index</code></pre></div>
+
+<p>比如，我改了某个测试文件，结果发现测试跑不过了，所以就把该文件恢复到了它能跑过的那个历史版本……</p>
+<p><strong>风险等级：高风险。</strong></p>
+<p>理由：这个操作会将指定文件在<code>work dir</code>的数据恢复成指定<code>commit</code>的样子，且会删除该文件在<code>stage</code>中的数据，都无法恢复，所以应该慎重使用。</p>
+<h3 id="三、其他技巧"><a href="#三、其他技巧" class="headerlink" title="三、其他技巧"></a>三、其他技巧</h3><p><strong>需求一，合并多个<code>commit</code></strong>。</p>
+<p>比如说我本地从<code>17bd20c</code>到<code>HEAD</code>有多个<code>commit</code>，但我希望把他们合并成一个<code>commit</code>推到远程仓库，这时候就可以使用<code>reset</code>命令：</p>
+<div class="hljs"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git reset <span class="hljs-number">17</span>bd20c
+<span class="hljs-variable">$ </span>git add .
+<span class="hljs-variable">$ </span>git commit -m <span class="hljs-string">'balabala'</span></code></pre></div>
+
+<p>回顾一下刚才说的<code>reset</code>命令的作用，相当于把 HEAD 移到了<code>17bd20c</code>这个<code>commit</code>，而且不会修改<code>work dir</code>中的数据，所以只要<code>add</code>再<code>commit</code>，就相当于把中间的多个<code>commit</code>合并到一个了。</p>
+<p><strong>需求二，由于<code>HEAD</code>指针的回退，导致有的<code>commit</code>在<code>git log</code>命令中无法看到，怎么得到它们的 Hash 值呢</strong>？</p>
+<p>再重复一遍，只要你不乱动本地的<code>.git</code>文件夹，任何修改只要提交到<code>commit history</code>中，都永远不会丢失，看不到某些<code>commit</code>只是因为它们不是我们当前<code>HEAD</code>位置的「历史」提交，我们可以使用如下命令查看操作记录：</p>
+<div class="hljs"><pre><code class="hljs angelscript">$ git <span class="hljs-built_in">ref</span>log</code></pre></div>
+
+<p>比如<code>reset</code>，<code>checkout</code>等等关键操作都会在这里留下记录，所有<code>commit</code>的 Hash 值都能在这里找到，所以如果你发现有哪个<code>commit</code>突然找不到了，一定都可以在这里找到。</p>
+<p><strong>需求三，怎么解决冲突</strong>？</p>
+<p>记住，Git 虽然高大上，但也不要迷恋，一定要懂得借助先进的工具。</p>
+<p>比较流行的代码编辑器或者 IDE 都会集成方便的可视化 Git 工具，至于解决冲突，可视化的表现方式不是比你在命令行里<code>git diff</code>看半天要清晰明了得多？只需要点点点就行了。</p>
+<p>所以说，只要明白本文讲的这些基本操作，够你用的了，平时能用图形化工具就多用图形化工具，毕竟工具都是为人服务的。</p>
+<p>别忘了看看 <a href="http://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484977&idx=1&sn=2c79a96aa3caf6acba22f8c0c114d676&chksm=9bd7f839aca0712f044a11e1c582cd5d413bb676de3f889dfc73dcd0be473d0756d98456dfde&scene=21#wechat_redirect" target="_blank" rel="noopener">一起刷题学习 Git/SQL/正则表达式</a>。</p>
 
             </article>
             <hr>
@@ -349,7 +375,7 @@ A 　&amp;Ref = b; <span class="hljs-comment">// 用派生类对象初始化基�
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
                     
                   </div>
                 
@@ -357,7 +383,7 @@ A 　&amp;Ref = b; <span class="hljs-comment">// 用派生类对象初始化基�
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/C-%E7%9A%84%E5%BC%95%E7%94%A8/">C++的引用</a>
+                      <a class="hover-with-bg" href="/tags/Git%E6%8A%80%E5%B7%A7/">Git技巧</a>
                     
                   </div>
                 
@@ -368,9 +394,9 @@ A 　&amp;Ref = b; <span class="hljs-comment">// 用派生类对象初始化基�
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/07/10/TCPIP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">
+                      <a href="/2020/07/12/%E7%94%A8%E5%8A%A8%E5%9B%BE%E5%B1%95%E7%A4%BA10%E5%A4%A7Git%E5%91%BD%E4%BB%A4/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【干货】40 张图解的TCP三次握手和四次挥手面试题</span>
+                        <span class="hidden-mobile">工作流一目了然，用动图展示10大Git命令</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -378,8 +404,8 @@ A 　&amp;Ref = b; <span class="hljs-comment">// 用派生类对象初始化基�
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/06/30/hexo%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">
-                        <span class="hidden-mobile">个人博客网站搭建教程</span>
+                      <a href="/2020/07/11/Git%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+                        <span class="hidden-mobile">Git常用指令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -700,7 +726,7 @@ A 　&amp;Ref = b; <span class="hljs-comment">// 用派生类对象初始化基�
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/2020/07/03/C++%E7%9A%84%E5%BC%95%E7%94%A8/');
+          var target = decodeURI('/2020/07/12/%E7%94%A8%E5%9B%9B%E4%B8%AA%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93%20Git%20%E7%9A%84%E6%89%80%E6%9C%89%E5%A5%97%E8%B7%AF/');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -794,7 +820,7 @@ A 　&amp;Ref = b; <span class="hljs-comment">// 用派生类对象初始化基�
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "C++的引用与指针的区别&nbsp;",
+        "用四个命令总结 Git 的所有套路&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 90,
