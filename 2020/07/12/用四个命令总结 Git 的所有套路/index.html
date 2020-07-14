@@ -213,7 +213,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年7月14日 下午
+                  本文最后更新于：2020年7月14日 晚上
                 
               </p>
             
@@ -229,7 +229,7 @@
 <p>以前我用 Git，就知道<code>add .</code>，然后<code>commit -m</code>，最后<code>push origin master</code>一套带走，或者就是把 Git 作为下载器，去<code>clone</code>别人的项目。但是在工作中呢，和别人一起开发代码，就需要处理一些复杂情况，比如解决冲突，比如手残恢复，等等等实用场景，这些我在后文都会列举。</p>
 <p>对于工具的学习，我认为应该多做减法，只捡最有用的学，那些奇技淫巧不学也罢，应该把时间投入更有价值的事情中。</p>
 <p><strong>所以本文不是一个大而全 Git 命令的使用手册，而是根据实际工作中最常见问题，提供小而美的解决方案，仅仅涉及四个命令：<code>add</code>，<code>commit</code>，<code>reset</code>，<code>checkout</code></strong>。</p>
-<p>PS： <a href="http://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484977&idx=1&sn=2c79a96aa3caf6acba22f8c0c114d676&chksm=9bd7f839aca0712f044a11e1c582cd5d413bb676de3f889dfc73dcd0be473d0756d98456dfde&scene=21#wechat_redirect" target="_blank" rel="noopener">一起刷题学习 Git/SQL/正则表达式 </a>介绍了一个可视化学习 Git 的网站，非常优秀，值得一刷。</p>
+<p>PS： <a href="https://www.yossi.top/2020/07/12/刷题学习-GitSQL正则表达式/" target="_blank" rel="noopener">一起刷题学习 Git/SQL/正则表达式 </a>介绍了一个可视化学习 Git 的网站，非常优秀，值得一刷。</p>
 <h3 id="一、预备知识"><a href="#一、预备知识" class="headerlink" title="一、预备知识"></a>一、预备知识</h3><p>首先，在进入 Git 的各种神仙操作之前，<strong>一定要明白 git 的三个「分区」是什么，否则的话你一定没办法真正理解 Git 的原理</strong>。</p>
 <p>本地 Git 的三个分区分别是：<code>working directory</code>，<code>stage/index area</code>，<code>commit history</code>。</p>
 <p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714161344.png" srcset="/img/loading.gif" alt="https://rogerdudler.github.io/git-guide"><a href="https://rogerdudler.github.io/git-guide" target="_blank" rel="noopener">https://rogerdudler.github.io/git-guide</a></p>
@@ -365,7 +365,7 @@ Updated <span class="hljs-number">1</span> path <span class="hljs-keyword">from<
 <p>记住，Git 虽然高大上，但也不要迷恋，一定要懂得借助先进的工具。</p>
 <p>比较流行的代码编辑器或者 IDE 都会集成方便的可视化 Git 工具，至于解决冲突，可视化的表现方式不是比你在命令行里<code>git diff</code>看半天要清晰明了得多？只需要点点点就行了。</p>
 <p>所以说，只要明白本文讲的这些基本操作，够你用的了，平时能用图形化工具就多用图形化工具，毕竟工具都是为人服务的。</p>
-<p>别忘了看看 <a href="http://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484977&idx=1&sn=2c79a96aa3caf6acba22f8c0c114d676&chksm=9bd7f839aca0712f044a11e1c582cd5d413bb676de3f889dfc73dcd0be473d0756d98456dfde&scene=21#wechat_redirect" target="_blank" rel="noopener">一起刷题学习 Git/SQL/正则表达式</a>。</p>
+<p>别忘了看看 <a href="https://www.yossi.top/2020/07/12/刷题学习-GitSQL正则表达式/" target="_blank" rel="noopener">一起刷题学习 Git/SQL/正则表达式</a>。</p>
 
             </article>
             <hr>
