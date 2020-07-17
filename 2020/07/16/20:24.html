@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Yossi">
   <meta name="keywords" content="">
-  <title>在线学习网站，刷题学习 Git/SQL/正则表达式 - YoX</title>
+  <title>批量删除QQ空间说说的JS脚本 - YoX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-12 20:24">
-      2020年7月12日 晚上
+    <time datetime="2020-07-16 20:24">
+      2020年7月16日 晚上
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      640 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      9
        分钟
     </span>
   
@@ -218,54 +218,103 @@
               </p>
             
             <article class="markdown-body">
-              <div class="note note-success">
-            <p>原创 labuladong </p>
-          </div>
+              <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>这个脚本是从当前页开始删除说说，自动跳转<code>下一页</code>，所以先去需要删除的起始页，再点击<code>删除所有说说按钮</code>，如果使用<code>自动跳转到说说标签</code>会从第一页开始删除，请确认好删除的范围，不然删掉了就找不回来了。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>建议使用谷歌的<code>chrome</code>浏览器，进入到空间的说说页面，按键盘的<code>F12</code>，点击进入<code>console</code>控制台，把下面的代码复制进去，回车运行。</p>
+<div class="hljs"><pre><code class="hljs js">addFloatButton(<span class="hljs-string">'删除所有说说'</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+	<span class="hljs-keyword">this</span>.loop = !<span class="hljs-keyword">this</span>.loop
+	<span class="hljs-keyword">const</span> appIframe = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.app_canvas_frame'</span>)
+	<span class="hljs-keyword">if</span> (!appIframe) &#123;
+    	<span class="hljs-keyword">const</span> switchToTag = <span class="hljs-built_in">window</span>.confirm(<span class="hljs-string">'未切换到“说说”标签，是否立即切换？'</span>)
+    	<span class="hljs-keyword">if</span> (switchToTag) &#123;
+			<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'head-nav-menu&gt;.menu_item_311&gt;a'</span>).click()
+    	&#125; 
+    	<span class="hljs-keyword">else</span> &#123;
+      		<span class="hljs-keyword">return</span>
+    	&#125;
+  	&#125;
+  	<span class="hljs-keyword">const</span> iframeDocument = appIframe.contentWindow.document
+  	<span class="hljs-keyword">while</span> (<span class="hljs-keyword">this</span>.loop) &#123;
+    	clickAllEl(<span class="hljs-string">'.del_btn'</span>, iframeDocument)
+    	<span class="hljs-keyword">await</span> sleepAsync(<span class="hljs-number">500</span>) 			<span class="hljs-comment">//点击删除，延迟500ms</span>
+    	clickAllEl(<span class="hljs-string">'.qz_dialog_layer_sub'</span>)
+    	<span class="hljs-keyword">await</span> sleepAsync(<span class="hljs-number">1500</span>)			<span class="hljs-comment">//点击确定，延迟500ms</span>
+    	nextPage()
+   		<span class="hljs-keyword">await</span> sleepAsync(<span class="hljs-number">3000</span>)			<span class="hljs-comment">//翻页延迟3s，这个延迟最低2s，不然会跳页</span>
+  	&#125;
 
-<p>对于技术的学习，我经常面临的困境是，<strong>理论知识知道的不少，但是有的场景实在无法模拟，缺少亲自动手实践的机会</strong>，如果能有一本带标准答案的习题册让我刷刷就好了。</p>
-<p>所以在学习新技术时，我首先会去搜索是否有在线刷题平台，你还别说，有的大神真就做了很不错的在线练习平台。下面就介绍几个平台，分别是学习 Git、SQL、正则表达式的在线练习平台。</p>
-<h2 id="一、练习-Git"><a href="#一、练习-Git" class="headerlink" title="一、练习 Git"></a>一、练习 Git</h2><p>这是个叫做 Learning Git Branching 的项目，是我一定要推荐的：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213835.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>正如对话框中的自我介绍，这确实也是我至今发现的<strong>最好</strong>的 Git 动画教程，没有之一。</p>
-<p>想当年我用 Git 就会 <code>add .</code>，<code>clone</code>，<code>push</code>，<code>pull</code>，<code>commit</code> 几个命令，其他的命令完全不会，Git 就是一个下载器，Github 就是个资源网站加免费图床，命令能不能达成目的都是靠运气。什么版本控制，我根本搞不懂，也懒得去看那一堆乱七八糟的文档。</p>
-<p>这个网站的教程不是给你举那种修改文件的细节例子，而是将每次 <code>commit</code> 都抽象成树的节点，<strong>用动画闯关的形式</strong>，让你自由使用 Git 命令完成目标：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213836.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>所有 Git 分支都被可视化了，你只要在左侧的命令行输入 Git 命令，分支会进行相应的变化，只要达成任务目标，你就过关啦！网站还会记录你的命令数，试试能不能以最少的命令数过关！</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200716154903.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>我一开始以为这个教程只包含本地 Git 仓库的版本管理，<strong>后来我惊奇地发现它还有远程仓库的操作教程</strong>！</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213839.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200716154924.png" srcset="/img/loading.gif" alt="img"></p>
-<p>真的跟玩游戏一样，难度设计合理，流畅度很好，我一玩都停不下来了，几小时就打通了，哈哈哈！</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200716154834.jpeg" srcset="/img/loading.gif" alt></p>
-<p>总之，这个教程很适合初学和进阶，如果你觉得自己对 Git 的掌握还不太好，用 Git 命令还是有运气成分，就可以玩玩这个教程，相信能够让你更熟练地使用 Git。</p>
-<p>它是一个开源项目，Github 项目地址：</p>
-<p><a href="https://github.com/pcottle/learnGitBranching" target="_blank" rel="noopener">https://github.com/pcottle/learnGitBranching</a></p>
-<p>教程网站地址：</p>
-<p><a href="https://learngitbranching.js.org" target="_blank" rel="noopener">https://learngitbranching.js.org</a></p>
-<h2 id="二、练习正则表达式"><a href="#二、练习正则表达式" class="headerlink" title="二、练习正则表达式"></a>二、练习正则表达式</h2><p><strong>正则表达式是个非常强有力的工具</strong>，可以说计算机中的一切数据都是字符，借助正则表达式这种模式匹配工具，操作计算机可以说是如虎添翼。</p>
-<p>我这里要推荐两个网站，一个是练习平台，一个是测试正则表达式的平台。</p>
-<p>先说练习平台，叫做 RegexOne：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200716155019.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>前面有基本教程，后面有一些常见的正则表达式题目，比如判断邮箱、URL、电话号，或者抽取日志的关键信息等等。</p>
-<p>只要写出符合要求的正则表达式，就可以进入下一个问题，关键是每道题还有标准答案，可以点击下面的 solution 按钮查看：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200716155027.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>RegexOne 网址：</p>
-<p><a href="https://regexone.com/" target="_blank" rel="noopener">https://regexone.com/</a></p>
-<p>再说测试工具，是个叫做 RegExr 的 Github 项目，这是它的网站：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213843.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>可以看见，输入文本和正则模式串后，<strong>网站会给正则表达式添加漂亮且容易辨认的样式，自动在文本中搜索模式串，高亮显示匹配的字符串，并且还会显示每个分组捕获的字符串，下方还会给出每个通配符的含义</strong>。</p>
-<p>这个网站可以配合前面的正则练习平台使用，在这里尝试各种表达式，成功匹配之后粘贴过去。</p>
-<p>RegExr 网址：</p>
-<p><a href="https://regexr.com/" target="_blank" rel="noopener">https://regexr.com/</a></p>
-<h2 id="三、练习-SQL"><a href="#三、练习-SQL" class="headerlink" title="三、练习 SQL"></a>三、练习 SQL</h2><p>这是一个叫做 SQLZOO 的网站，左侧是所有的练习内容：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213844.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>SQLZOO 是一款很好用的 SQL 练习平台，英文不难理解，可以直接看英文版，但是也可以切换繁体中文，比较友好。</p>
-<p>这里都是比较常用的 SQL 命令，给你一个需求，你写 SQL 语句实现正确的查询结果。<strong>最重要的是，这里不仅对每个命令的用法有详细解释，每个专题后面还有选择题（quiz），而且有判题系统，甚至有的比较难的题目还有视频讲解</strong>：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213845.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>至于难度，循序渐进，即便对新手也很友好，靠后的问题确实比较有技巧性，相信这是热爱思维挑战的人喜欢的！LeetCode 也有 SQL 相关的题目，不过难度一般比较大，我觉得 SQLZOO 刷完基础 SQL 命令再去 LeetCode 刷比较合适。</p>
-<p>网站地址：</p>
-<p><a href="https://sqlzoo.net/" target="_blank" rel="noopener">https://sqlzoo.net/</a></p>
-<p>以上就是我想推荐的几个网站，没有什么技术是刷题学不会的，如果有，就多刷一些！</p>
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nextPage</span> (<span class="hljs-params"></span>) </span>&#123;
+    	iframeDocument.querySelectorAll(<span class="hljs-string">'.mod_pagenav_main&gt;a'</span>).forEach(<span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> 		&#123;
+      		<span class="hljs-keyword">if</span> (el.innerText === <span class="hljs-string">'下一页'</span>) &#123;
+        		el.click()
+      		&#125;
+    	&#125;)
+  	&#125;
+&#125;)
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clickAllEl</span> (<span class="hljs-params">selector, parentNode = document</span>) </span>&#123;
+  	parentNode.querySelectorAll(selector).forEach(<span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> el.click())
+&#125;
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sleepAsync</span> (<span class="hljs-params">time</span>) </span>&#123;
+  	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> setTimeout(resolve, time))
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addFloatButton</span> (<span class="hljs-params">text, onclick</span>) </span>&#123;
+  	<span class="hljs-keyword">if</span> (!<span class="hljs-built_in">document</span>.addFloatButton) &#123;
+    	<span class="hljs-keyword">const</span> buttonContainer = <span class="hljs-built_in">document</span>.body
+        	.appendChild(<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>))
+        	.attachShadow(&#123; <span class="hljs-attr">mode</span>: <span class="hljs-string">'open'</span> &#125;)
+        buttonContainer.innerHTML = <span class="hljs-string">'&lt;style&gt;\</span>
+<span class="hljs-string">        	:host&#123;position:fixed;\</span>
+<span class="hljs-string">        		top:3px;\</span>
+<span class="hljs-string">        		left:3px;\</span>
+<span class="hljs-string">        		z-index:2147483647;height:0&#125;\</span>
+<span class="hljs-string">        	#i&#123;display:none&#125;\</span>
+<span class="hljs-string">            *&#123;	float:left;\</span>
+<span class="hljs-string">              	margin:4px;\</span>
+<span class="hljs-string">              	padding:1em;\</span>
+<span class="hljs-string">              	outline:0;\</span>
+<span class="hljs-string">              	border:0;\</span>
+<span class="hljs-string">              	border-radius:5px;\</span>
+<span class="hljs-string">              	background:#1e88e5;\</span>
+<span class="hljs-string">              	box-shadow:0 1px 4pxrgba(0,0,0,.1);\</span>
+<span class="hljs-string">    		  	color:#fff;\</span>
+<span class="hljs-string">              	font-size:14px;\</span>
+<span class="hljs-string">    		  	line-height:0;\</span>
+<span class="hljs-string">    		  	transition:.3s&#125;:active&#123;background:#42a5f5;\</span>
+<span class="hljs-string">                box-shadow:0 2px 5px rgba(0,0,0,.2)\</span>
+<span class="hljs-string">              &#125;\</span>
+<span class="hljs-string">			button:active&#123;\</span>
+<span class="hljs-string">        			transition:0s&#125;:checked~button&#123;\</span>
+<span class="hljs-string">                    visibility:hidden;\</span>
+<span class="hljs-string">                    opacity:0;\</span>
+<span class="hljs-string">                    transform:translateY(-3em)\</span>
+<span class="hljs-string">                &#125;\</span>
+<span class="hljs-string">				label&#123;\</span>
+<span class="hljs-string">                    border-radius:50%\</span>
+<span class="hljs-string">                &#125;\</span>
+<span class="hljs-string">                :checked~label&#123;\</span>
+<span class="hljs-string">                	opacity:.3;\</span>
+<span class="hljs-string">                    transform:translateY(3em)\</span>
+<span class="hljs-string">                &#125;\</span>
+<span class="hljs-string">                &lt;/style&gt;&lt;input id=i type=checkbox&gt;&lt;label for=i&gt;&lt;/label&gt;'</span>       
+    	<span class="hljs-built_in">document</span>.addFloatButton = <span class="hljs-function">(<span class="hljs-params">text, onclick</span>) =&gt;</span> &#123;
+    		<span class="hljs-keyword">const</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>)
+      		button.textContent = text
+      		button.addEventListener(<span class="hljs-string">'click'</span>, onclick)
+      		<span class="hljs-keyword">return</span> buttonContainer.appendChild(button)
+    	&#125;
+  	&#125;
+  	<span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.addFloatButton(text, onclick)
+&#125;</code></pre></div>
+
+<p>在页面的左上角会出现这样的图标按钮：</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200717180339.png" srcset="/img/loading.gif" alt="image-20200717180133961"></p>
+<p>圆圈是<code>隐藏</code>和<code>显示</code>后面<code>“删除所有说说”</code>功能按钮的作用；</p>
+<p>点击一次<code>“删除所有说说”</code>开始运行脚本，会自动进行删除说说操作，不需要你去点击页面的确认按钮，这个运行速度可以调整，在代码注释里有标记。</p>
+<p>再次点击<code>“删除所有说说”</code>按钮，立刻停止脚本运行。</p>
+<p>删除几十页后会弹出验证码，这个时候就不能再删了，需要等待一个小时后再来。</p>
 
             </article>
             <hr>
@@ -275,11 +324,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
-                    
-                      <a class="hover-with-bg" href="/categories/Git/SQL/">SQL</a>
-                    
-                      <a class="hover-with-bg" href="/categories/Git/SQL/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+                      <a class="hover-with-bg" href="/categories/%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7/">脚本工具</a>
                     
                   </div>
                 
@@ -287,11 +332,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Git%E7%BB%83%E4%B9%A0/">Git练习</a>
-                    
-                      <a class="hover-with-bg" href="/tags/SQL/">SQL</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%AD%A3%E5%88%99/">正则</a>
+                      <a class="hover-with-bg" href="/tags/JS/">JS</a>
                     
                   </div>
                 
@@ -302,18 +343,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/ckcq8o63a001jq6va8wmm9wjz.html">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">写给大忙人看的操作系统</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/ckcq8o626000bq6va6d3158qz.html">
-                        <span class="hidden-mobile">工作流一目了然，用动图展示10大Git命令</span>
+                      <a href="/2020/07/13/15:24.html">
+                        <span class="hidden-mobile">写给大忙人看的操作系统</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -634,7 +669,7 @@
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/ckcq8o629000fq6va3eiubh6q.html');
+          var target = decodeURI('/2020/07/16/20:24.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -728,7 +763,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "在线学习网站，刷题学习 Git/SQL/正则表达式&nbsp;",
+        "批量删除QQ空间说说的JS脚本&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 90,
