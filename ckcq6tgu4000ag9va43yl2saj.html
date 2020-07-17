@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Yossi">
   <meta name="keywords" content="">
-  <title>Git常用指令 - YoX</title>
+  <title>批量删除QQ空间说说的JS脚本 - YoX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-11 15:43">
-      2020年7月11日 下午
+    <time datetime="2020-07-16 20:24">
+      2020年7月16日 晚上
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      641 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      9
        分钟
     </span>
   
@@ -213,212 +213,73 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年7月14日 下午
+                  本文最后更新于：2020年7月17日 晚上
                 
               </p>
             
             <article class="markdown-body">
-              <p>这篇文章，我把那些命令都分类总结了一下（当然，是参考别人的分类的），这些总结大部分来自于我买的一个 Git 鼠标垫，主要是为了以后自己忘记了方便查找。</p>
-<a id="more"></a>
+              <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>这个脚本是从当前页开始删除说说，自动跳转<code>下一页</code>，所以先去需要删除的起始页，再点击<code>删除所有说说按钮</code>，如果使用<code>自动跳转到说说标签</code>会从第一页开始删除，请确认好删除的范围，不然删掉了就找不回来了。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>建议使用谷歌的<code>chrome</code>浏览器，进入到空间的说说页面，按键盘的<code>F12</code>，点击进入<code>console</code>控制台，把下面的代码复制进去，回车运行。</p>
+<div class="hljs"><pre><code class="hljs js">addFloatButton(<span class="hljs-string">'删除所有说说'</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+	<span class="hljs-keyword">this</span>.loop = !<span class="hljs-keyword">this</span>.loop
+	<span class="hljs-keyword">const</span> appIframe = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.app_canvas_frame'</span>)
+	<span class="hljs-keyword">if</span> (!appIframe) &#123;
+    	<span class="hljs-keyword">const</span> switchToTag = <span class="hljs-built_in">window</span>.confirm(<span class="hljs-string">'未切换到“说说”标签，是否立即切换？'</span>)
+    	<span class="hljs-keyword">if</span> (switchToTag) &#123;
+			<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'head-nav-menu&gt;.menu_item_311&gt;a'</span>).click()
+    	&#125; 
+    	<span class="hljs-keyword">else</span> &#123;
+      		<span class="hljs-keyword">return</span>
+    	&#125;
+  	&#125;
+  	<span class="hljs-keyword">const</span> iframeDocument = appIframe.contentWindow.document
+  	<span class="hljs-keyword">while</span> (<span class="hljs-keyword">this</span>.loop) &#123;
+    	clickAllEl(<span class="hljs-string">'.del_btn'</span>, iframeDocument)
+    	<span class="hljs-keyword">await</span> sleepAsync(<span class="hljs-number">500</span>) 			<span class="hljs-comment">//点击删除，延迟500ms</span>
+    	clickAllEl(<span class="hljs-string">'.qz_dialog_layer_sub'</span>)
+    	<span class="hljs-keyword">await</span> sleepAsync(<span class="hljs-number">1500</span>)			<span class="hljs-comment">//点击确定，延迟500ms</span>
+    	nextPage()
+   		<span class="hljs-keyword">await</span> sleepAsync(<span class="hljs-number">3000</span>)			<span class="hljs-comment">//翻页延迟3s，这个延迟最低2s，不然会跳页</span>
+  	&#125;
 
-<h2 id="一、Git-配置相关"><a href="#一、Git-配置相关" class="headerlink" title="一、Git 配置相关"></a>一、Git 配置相关</h2><p>如果你首次使用 Git，那刚开始首先是需要配置各种身份信息的，这样当你提交相关任务的时候，别人才能知道这个 commit 是谁提交的。</p>
-<h4 id="（1）、Git-最小配置"><a href="#（1）、Git-最小配置" class="headerlink" title="（1）、Git 最小配置"></a>（1）、Git 最小配置</h4><p>1、配置全局账户，也就是该账户对所有的 Git 仓库都有效</p>
-<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global user.name <span class="hljs-string">'你的账户名称'</span>
-git<span class="hljs-built_in"> config </span>--global user.email <span class="hljs-string">'你的 Email'</span></code></pre></div>
 
-<p>2、配置局部账户，也就是该账户只对当前 Git 仓库有效</p>
-<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--local user.name <span class="hljs-string">'你的账户名称'</span> 
-git<span class="hljs-built_in"> config </span>--local user.email <span class="hljs-string">'你的 Email'</span></code></pre></div>
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nextPage</span> (<span class="hljs-params"></span>) </span>&#123;
+    	iframeDocument.querySelectorAll(<span class="hljs-string">'.mod_pagenav_main&gt;a'</span>).forEach(<span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> 		&#123;
+      		<span class="hljs-keyword">if</span> (el.innerText === <span class="hljs-string">'下一页'</span>) &#123;
+        		el.click()
+      		&#125;
+    	&#125;)
+  	&#125;
+&#125;)
 
-<p>注意，不同点就是一个参数是 global（全局），一个是 local(本地)</p>
-<h4 id="（2）、查看相关配置情况"><a href="#（2）、查看相关配置情况" class="headerlink" title="（2）、查看相关配置情况"></a>（2）、查看相关配置情况</h4><p>配置了之后，显然有时候是需要查看我们当前配置的相关情况的，可以使用如下命令</p>
-<p>1、查看 global 类型的配置情况</p>
-<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global --list</code></pre></div>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clickAllEl</span> (<span class="hljs-params">selector, parentNode = document</span>) </span>&#123;
+  parentNode.querySelectorAll(selector).forEach(<span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> el.click())
+&#125;
 
-<p>2、查看某个仓库下的配置情况</p>
-<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--local --list</code></pre></div>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sleepAsync</span> (<span class="hljs-params">time</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> setTimeout(resolve, time))
+&#125;
 
-<h2 id="二、本地基本操作"><a href="#二、本地基本操作" class="headerlink" title="二、本地基本操作"></a>二、本地基本操作</h2><p>这部分命令有点多，也是使用的最频繁的命令了，待我一一列举出来，建议收藏</p>
-<h4 id="（1）、基本操作"><a href="#（1）、基本操作" class="headerlink" title="（1）、基本操作"></a>（1）、基本操作</h4><p>1、查看变更情况</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git status</span></code></pre></div>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addFloatButton</span> (<span class="hljs-params">text, onclick</span>) </span>&#123;
+  <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">document</span>.addFloatButton) &#123;
+    <span class="hljs-keyword">const</span> buttonContainer = 		<span class="hljs-built_in">document</span>.body.appendChild(<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>)).attachShadow(&#123; <span class="hljs-attr">mode</span>: <span class="hljs-string">'open'</span> &#125;)
+    buttonContainer.innerHTML = <span class="hljs-string">'&lt;style&gt;:host&#123;position:fixed;top:3px;left:3px;z-index:2147483647;height:0&#125;#i&#123;display:none&#125;*&#123;float:left;margin:4px;padding:1em;outline:0;border:0;border-radius:5px;background:#1e88e5;box-shadow:0 1px 4px rgba(0,0,0,.1);color:#fff;font-size:14px;line-height:0;transition:.3s&#125;:active&#123;background:#42a5f5;box-shadow:0 2px 5px rgba(0,0,0,.2)&#125;button:active&#123;transition:0s&#125;:checked~button&#123;visibility:hidden;opacity:0;transform:translateY(-3em)&#125;label&#123;border-radius:50%&#125;:checked~label&#123;opacity:.3;transform:translateY(3em)&#125;&lt;/style&gt;&lt;input id=i type=checkbox&gt;&lt;label for=i&gt;&lt;/label&gt;'</span>
+    <span class="hljs-built_in">document</span>.addFloatButton = <span class="hljs-function">(<span class="hljs-params">text, onclick</span>) =&gt;</span> &#123;
+      <span class="hljs-keyword">const</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>)
+      button.textContent = text
+      button.addEventListener(<span class="hljs-string">'click'</span>, onclick)
+      <span class="hljs-keyword">return</span> buttonContainer.appendChild(button)
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.addFloatButton(text, onclick)
+&#125;</code></pre></div>
 
-<p>2、查看当前工作在哪个分支上</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-v</code></pre></div>
-
-<p>3、切换到指定分支</p>
-<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> checkout 指定分支的名称</code></pre></div>
-
-<p>4、把<strong>当前目录及其子目录</strong>下所有变更都加入到<strong>暂存区</strong></p>
-<div class="hljs"><pre><code class="hljs avrasm">git <span class="hljs-keyword">add</span> . // 注意，<span class="hljs-keyword">add</span> 后面是一个 <span class="hljs-string">'.'</span>；</code></pre></div>
-
-<p>5、把仓库内<strong>所有</strong>变更都假如到暂存区</p>
-<div class="hljs"><pre><code class="hljs dockerfile">git <span class="hljs-keyword">add</span><span class="bash"> -A</span></code></pre></div>
-
-<p>6、把指定文件添加到暂存区</p>
-<div class="hljs"><pre><code class="hljs routeros">git <span class="hljs-builtin-name">add</span> 文件1 文件2 <span class="hljs-built_in">..</span>. 文件n</code></pre></div>
-
-<p>7、创建正式的 commit，也就是把当前的数据提交上去</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git commit</span></code></pre></div>
-
-<h4 id="（二）、比较差异"><a href="#（二）、比较差异" class="headerlink" title="（二）、比较差异"></a>（二）、比较差异</h4><p>1、比较某文件工作区和暂存区的差异</p>
-<div class="hljs"><pre><code class="hljs maxima">git <span class="hljs-built_in">diff</span> 某文件</code></pre></div>
-
-<p>2、比较某文件暂存区和 HEAD 的差异</p>
-<div class="hljs"><pre><code class="hljs mipsasm">git <span class="hljs-keyword">diff </span>--<span class="hljs-keyword">cache </span>某文件</code></pre></div>
-
-<p>3、比较工作区和暂存区的所有差异</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git diff</span></code></pre></div>
-
-<p>4、比较暂存区和 HEAD 的所有差异</p>
-<div class="hljs"><pre><code class="hljs ada">git diff <span class="hljs-comment">--cache</span></code></pre></div>
-
-<h4 id="（3）、暂存区与工作区之间回滚"><a href="#（3）、暂存区与工作区之间回滚" class="headerlink" title="（3）、暂存区与工作区之间回滚"></a>（3）、暂存区与工作区之间回滚</h4><p>1、把工作区指定文件恢复成和暂存区一样</p>
-<div class="hljs"><pre><code class="hljs angelscript">git checkout 文件<span class="hljs-number">1</span> 文件<span class="hljs-number">2</span> ... 文件n</code></pre></div>
-
-<p>2、把暂存区指定文件回复和 HEAD 一样</p>
-<div class="hljs"><pre><code class="hljs angelscript">git reset 文件<span class="hljs-number">1</span> 文件<span class="hljs-number">2</span> ... 文件n</code></pre></div>
-
-<p>3、把暂存区和工作区所有文件恢复成和 HEAD 一样</p>
-<div class="hljs"><pre><code class="hljs pgsql">git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--hard</span></code></pre></div>
-
-<p>4、用 difftool 比较任意两个 commit 的差异</p>
-<div class="hljs"><pre><code class="hljs mipsasm">git <span class="hljs-keyword">difftool </span>commit1 commit2</code></pre></div>
-
-<blockquote>
-<p>注意，从工作区回滚到暂存区则用 checkout ，否则用 reset</p>
-</blockquote>
-<h4 id="（四）、其他"><a href="#（四）、其他" class="headerlink" title="（四）、其他"></a>（四）、其他</h4><p>查看哪些文件没有被 Git 管控</p>
-<div class="hljs"><pre><code class="hljs livecodeserver">git ls-<span class="hljs-built_in">files</span> <span class="hljs-comment">--others</span></code></pre></div>
-
-<h2 id="三、加塞临时任务处理"><a href="#三、加塞临时任务处理" class="headerlink" title="三、加塞临时任务处理"></a>三、加塞临时任务处理</h2><p>1、把未处理完的变更先保存到 stash 中</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git stash</span></code></pre></div>
-
-<p>2、临时任务处理完后继续之前的工作</p>
-<div class="hljs"><pre><code class="hljs maxima">git stash <span class="hljs-built_in">pop</span> // <span class="hljs-built_in">pop</span> 相当于栈的出栈和入栈一样，把之前的任务弹出来
-或者
-git stash <span class="hljs-built_in">apply</span> // 和 <span class="hljs-built_in">pop</span> 不同的是， <span class="hljs-built_in">apply</span> 相当于从栈顶把任务取出来，但是不过从栈中把任务移除</code></pre></div>
-
-<p>3、查看所有的 stash</p>
-<div class="hljs"><pre><code class="hljs applescript">git stash <span class="hljs-built_in">list</span></code></pre></div>
-
-<p>4、取回某次 stash 的变更</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> stash <span class="hljs-keyword">pop </span>stash <span class="hljs-comment">@&#123;数字n&#125;</span></code></pre></div>
-
-<h2 id="四、修改个人分支历史"><a href="#四、修改个人分支历史" class="headerlink" title="四、修改个人分支历史"></a>四、修改个人分支历史</h2><p>我们的仓库的内容每次变更执行 commit 的时候，都会生成一个新的 commit，不过有时候，我们不想产生新的 commit，而是想要通过修改之前的 commit 来变更仓库的内容，那么就可以使用如下命令了</p>
-<p>1、修改最后一次 commit</p>
-<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-number">1</span>、在工作区中修改文件
-<span class="hljs-number">2</span>、git add
-<span class="hljs-number">3</span>、git commit --amend</code></pre></div>
-
-<p>2|、修改中间的 commit(假设代号为 X)</p>
-<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-number">1.</span> git rebase -i X前面的一个 commit 的 id
-<span class="hljs-number">2.</span> 在工作区修改文件
-<span class="hljs-number">3.</span> git add
-<span class="hljs-number">4.</span> git rebase --contiue</code></pre></div>
-
-<h2 id="五、查看变更日志等"><a href="#五、查看变更日志等" class="headerlink" title="五、查看变更日志等"></a>五、查看变更日志等</h2><p>1、当前分支各个 commit 用一行显示</p>
-<div class="hljs"><pre><code class="hljs applescript">git <span class="hljs-built_in">log</span> <span class="hljs-comment">--online</span></code></pre></div>
-
-<p>2、显示最近的 n 个 commit</p>
-<div class="hljs"><pre><code class="hljs excel">git <span class="hljs-built_in">log</span> -<span class="hljs-built_in">n</span></code></pre></div>
-
-<p>3、用图示显示所有的分支历史</p>
-<div class="hljs"><pre><code class="hljs brainfuck"><span class="hljs-comment">git</span> <span class="hljs-comment">log</span> --<span class="hljs-comment">online</span> --<span class="hljs-comment">graph</span> --<span class="hljs-comment">all</span></code></pre></div>
-
-<p>4、查看涉及到某文件变更的所有 commit</p>
-<div class="hljs"><pre><code class="hljs 1c">git <span class="hljs-built_in">log</span> 某文件</code></pre></div>
-
-<p>5、某文件各行最后修改对应的 commit 以及作者</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">blame </span>某文件</code></pre></div>
-
-<h2 id="六、分支与标签"><a href="#六、分支与标签" class="headerlink" title="六、分支与标签"></a>六、分支与标签</h2><h4 id="1、创建新分支"><a href="#1、创建新分支" class="headerlink" title="1、创建新分支"></a>1、创建新分支</h4><p>基于当前分支创建新分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>新分支</code></pre></div>
-
-<p>基于指定分支创建新分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>新分支 已有分支</code></pre></div>
-
-<p>基于某个 commit 创建分支</p>
-<div class="hljs"><pre><code class="hljs sql">git branch 新分支 某个 <span class="hljs-keyword">commit</span> 的<span class="hljs-keyword">id</span></code></pre></div>
-
-<p>创建分支并且切换到该分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> chechout -<span class="hljs-keyword">b </span>新分支</code></pre></div>
-
-<h4 id="2、列出分支"><a href="#2、列出分支" class="headerlink" title="2、列出分支"></a>2、列出分支</h4><p>列出本地分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-v</code></pre></div>
-
-<p>列出本地和远端分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-av</code></pre></div>
-
-<p>列出远端所有分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-rv</code></pre></div>
-
-<p>列出名称符号某样式的远端分支</p>
-<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> branch -rv -l <span class="hljs-string">'某样式'</span></code></pre></div>
-
-<h4 id="3、删除分支"><a href="#3、删除分支" class="headerlink" title="3、删除分支"></a>3、删除分支</h4><p>安全删除本地某分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-d 要删除的分支</code></pre></div>
-
-<p>强行删除本地分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-D 要删除的分支</code></pre></div>
-
-<p>删除已合并到 master 分支的所有本地分支</p>
-<div class="hljs"><pre><code class="hljs crmsh">git branch --merged <span class="hljs-keyword">master</span> <span class="hljs-title">| grep</span> -v '^\*\| <span class="hljs-literal">master</span>' | xargs -n <span class="hljs-number">1</span> git branch -d</code></pre></div>
-
-<p>删除远端 origin 已不存在的所有本地分支</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git remote prune origin</span></code></pre></div>
-
-<h4 id="4、打标签"><a href="#4、打标签" class="headerlink" title="4、打标签"></a>4、打标签</h4><p>从 commit 打上标签</p>
-<div class="hljs"><pre><code class="hljs crmsh">git <span class="hljs-keyword">tag</span> <span class="hljs-title">标签名 commit</span> 的id</code></pre></div>
-
-<h2 id="七、两分支之间的集成"><a href="#七、两分支之间的集成" class="headerlink" title="七、两分支之间的集成"></a>七、两分支之间的集成</h2><p>1、把 A 分支合入到当前分支，且为 merge 创建 commit</p>
-<div class="hljs"><pre><code class="hljs cos">git <span class="hljs-keyword">merge</span> A分支</code></pre></div>
-
-<p>2、把 A 分支合入到 B 分支，且为 Merge 创建 commit</p>
-<div class="hljs"><pre><code class="hljs cos">git <span class="hljs-keyword">merge</span> A分支 B分支</code></pre></div>
-
-<p>3、把当前分支基于B分支做 rebase，以便把B分支合入到当前分支</p>
-<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> rebase B分支</code></pre></div>
-
-<p>4、把A分支基于B分支做rebase，以便把B分支合入到A分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> rebase <span class="hljs-keyword">B分支 </span>A分支</code></pre></div>
-
-<p>5、用 mergetool 解决冲突</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git mergetool</span></code></pre></div>
-
-<h2 id="八、和远端交互"><a href="#八、和远端交互" class="headerlink" title="八、和远端交互"></a>八、和远端交互</h2><p>1、列出所有 remote</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git remote -v</span></code></pre></div>
-
-<p>2、增加 remote</p>
-<div class="hljs"><pre><code class="hljs dockerfile">git remote <span class="hljs-keyword">add</span><span class="bash"> url地址</span></code></pre></div>
-
-<p>3、删除 remote</p>
-<div class="hljs"><pre><code class="hljs routeros">git remote <span class="hljs-builtin-name">remove</span> remote的名称</code></pre></div>
-
-<p>4、改变 remote 的name</p>
-<div class="hljs"><pre><code class="hljs coq">git remote <span class="hljs-built_in">rename</span> 旧名称 新名称</code></pre></div>
-
-<p>5、把远端所有分支和标签的变更都拉到本地</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git fetch remote</span></code></pre></div>
-
-<p>6、把远端分支的变更拉倒本地，且 merge 到本地分支</p>
-<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> pull remote名称 分支名</code></pre></div>
-
-<p>关于 pull 和 fetch 的区别不懂可以看这篇文章<a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247486636&idx=2&sn=b3d94e89b4bf2e7dba8b995dc694ccd8&scene=21#wechat_redirect" target="_blank" rel="noopener">从0学习Git：详解git pull和git fetch的区别</a></p>
-<p>7、把本地分支 push 到远端</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">push </span>remote名称 分支名</code></pre></div>
-
-<p>8、删除远端分支</p>
-<div class="hljs"><pre><code class="hljs gauss">git <span class="hljs-keyword">push</span> remote --<span class="hljs-keyword">delete</span> 远端分支名
-或者
-git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></div>
-
-<p>9、向远端提交指定标签</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">push </span>remote 标签名</code></pre></div>
-
-<p>10、向远端提交所有标签</p>
-<div class="hljs"><pre><code class="hljs ada">git push remote <span class="hljs-comment">--tags</span></code></pre></div>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果把这些命令掌握了，那么 git 就顺手拈来了，不过很多命令是比较容易忘的，所有还是比较需要一份 git 手册，以后用到的时候多查几次，多用几次命令，相信就能够记住了。</p>
+<p>在页面的左上角会出现这样的图标按钮：</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200717180339.png" srcset="/img/loading.gif" alt="image-20200717180133961"></p>
+<p>圆圈是<code>隐藏</code>和<code>显示</code>后面<code>“删除所有说说”</code>功能按钮的作用；</p>
+<p>点击一次<code>“删除所有说说”</code>开始运行脚本，会自动进行删除说说操作，不需要你去点击页面的确认按钮，这个运行速度可以调整，在代码注释里有标记。</p>
+<p>再次点击<code>“删除所有说说”</code>按钮，立刻停止脚本运行。</p>
+<p>删除几十页后会弹出验证码，这个时候就不能再删了，需要等待一个小时后再来。</p>
 
             </article>
             <hr>
@@ -428,7 +289,7 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
+                      <a class="hover-with-bg" href="/categories/%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7/">脚本工具</a>
                     
                   </div>
                 
@@ -436,7 +297,7 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                      <a class="hover-with-bg" href="/tags/JS/">JS</a>
                     
                   </div>
                 
@@ -447,18 +308,12 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/year07120924ckcq6mvj7000ta2vabvvfd67p">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">用四个命令总结 Git 的所有套路</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/year07101228ckcq6mvic0005a2vah6y16ay8">
-                        <span class="hidden-mobile">【干货】40 张图解的TCP三次握手和四次挥手面试题</span>
+                      <a href="/ckcq6tgux0012g9vabcbr6bjy.html">
+                        <span class="hidden-mobile">写给大忙人看的操作系统</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -779,7 +634,7 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/year07111543ckcq6mvia0004a2vaa87n9185');
+          var target = decodeURI('/ckcq6tgu4000ag9va43yl2saj.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -873,7 +728,7 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Git常用指令&nbsp;",
+        "批量删除QQ空间说说的JS脚本&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 90,

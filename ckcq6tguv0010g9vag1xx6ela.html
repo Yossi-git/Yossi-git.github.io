@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Yossi">
   <meta name="keywords" content="">
-  <title>在线学习网站，刷题学习 Git/SQL/正则表达式 - YoX</title>
+  <title>用四个命令总结 Git 的所有套路 - YoX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-12 20:24">
-      2020年7月12日 晚上
+    <time datetime="2020-07-12 09:24">
+      2020年7月12日 上午
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      2.8k 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      31
        分钟
     </span>
   
@@ -213,59 +213,159 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年7月17日 晚上
+                  本文最后更新于：2020年7月15日 上午
                 
               </p>
             
             <article class="markdown-body">
-              <div class="note note-success">
-            <p>原创 labuladong </p>
-          </div>
+              <p>使用Git搞不明白的一个重要原因就是，命令的功能太杂，有时候一个需求可以用好几种命令解决，而且有的命令还有别名。这导致什么问题呢，我在网上找到的答案五花八门，竟然都能达成目的，难以找到规律，毫无套路可言。对于我这种不喜欢动脑子，只喜欢玩套路的人来说，简直不能接受。</p>
+<a id="more"></a>
 
-<p>对于技术的学习，我经常面临的困境是，<strong>理论知识知道的不少，但是有的场景实在无法模拟，缺少亲自动手实践的机会</strong>，如果能有一本带标准答案的习题册让我刷刷就好了。</p>
-<p>所以在学习新技术时，我首先会去搜索是否有在线刷题平台，你还别说，有的大神真就做了很不错的在线练习平台。下面就介绍几个平台，分别是学习 Git、SQL、正则表达式的在线练习平台。</p>
-<h2 id="一、练习-Git"><a href="#一、练习-Git" class="headerlink" title="一、练习 Git"></a>一、练习 Git</h2><p>这是个叫做 Learning Git Branching 的项目，是我一定要推荐的：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213835.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>正如对话框中的自我介绍，这确实也是我至今发现的<strong>最好</strong>的 Git 动画教程，没有之一。</p>
-<p>想当年我用 Git 就会 <code>add .</code>，<code>clone</code>，<code>push</code>，<code>pull</code>，<code>commit</code> 几个命令，其他的命令完全不会，Git 就是一个下载器，Github 就是个资源网站加免费图床，命令能不能达成目的都是靠运气。什么版本控制，我根本搞不懂，也懒得去看那一堆乱七八糟的文档。</p>
-<p>这个网站的教程不是给你举那种修改文件的细节例子，而是将每次 <code>commit</code> 都抽象成树的节点，<strong>用动画闯关的形式</strong>，让你自由使用 Git 命令完成目标：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213836.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>所有 Git 分支都被可视化了，你只要在左侧的命令行输入 Git 命令，分支会进行相应的变化，只要达成任务目标，你就过关啦！网站还会记录你的命令数，试试能不能以最少的命令数过关！</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200716154903.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>我一开始以为这个教程只包含本地 Git 仓库的版本管理，<strong>后来我惊奇地发现它还有远程仓库的操作教程</strong>！</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213839.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200716154924.png" srcset="/img/loading.gif" alt="img"></p>
-<p>真的跟玩游戏一样，难度设计合理，流畅度很好，我一玩都停不下来了，几小时就打通了，哈哈哈！</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200716154834.jpeg" srcset="/img/loading.gif" alt></p>
-<p>总之，这个教程很适合初学和进阶，如果你觉得自己对 Git 的掌握还不太好，用 Git 命令还是有运气成分，就可以玩玩这个教程，相信能够让你更熟练地使用 Git。</p>
-<p>它是一个开源项目，Github 项目地址：</p>
-<p><a href="https://github.com/pcottle/learnGitBranching" target="_blank" rel="noopener">https://github.com/pcottle/learnGitBranching</a></p>
-<p>教程网站地址：</p>
-<p><a href="https://learngitbranching.js.org" target="_blank" rel="noopener">https://learngitbranching.js.org</a></p>
-<h2 id="二、练习正则表达式"><a href="#二、练习正则表达式" class="headerlink" title="二、练习正则表达式"></a>二、练习正则表达式</h2><p><strong>正则表达式是个非常强有力的工具</strong>，可以说计算机中的一切数据都是字符，借助正则表达式这种模式匹配工具，操作计算机可以说是如虎添翼。</p>
-<p>我这里要推荐两个网站，一个是练习平台，一个是测试正则表达式的平台。</p>
-<p>先说练习平台，叫做 RegexOne：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200716155019.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>前面有基本教程，后面有一些常见的正则表达式题目，比如判断邮箱、URL、电话号，或者抽取日志的关键信息等等。</p>
-<p>只要写出符合要求的正则表达式，就可以进入下一个问题，关键是每道题还有标准答案，可以点击下面的 solution 按钮查看：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200716155027.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>RegexOne 网址：</p>
-<p><a href="https://regexone.com/" target="_blank" rel="noopener">https://regexone.com/</a></p>
-<p>再说测试工具，是个叫做 RegExr 的 Github 项目，这是它的网站：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213843.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>可以看见，输入文本和正则模式串后，<strong>网站会给正则表达式添加漂亮且容易辨认的样式，自动在文本中搜索模式串，高亮显示匹配的字符串，并且还会显示每个分组捕获的字符串，下方还会给出每个通配符的含义</strong>。</p>
-<p>这个网站可以配合前面的正则练习平台使用，在这里尝试各种表达式，成功匹配之后粘贴过去。</p>
-<p>RegExr 网址：</p>
-<p><a href="https://regexr.com/" target="_blank" rel="noopener">https://regexr.com/</a></p>
-<h2 id="三、练习-SQL"><a href="#三、练习-SQL" class="headerlink" title="三、练习 SQL"></a>三、练习 SQL</h2><p>这是一个叫做 SQLZOO 的网站，左侧是所有的练习内容：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213844.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>SQLZOO 是一款很好用的 SQL 练习平台，英文不难理解，可以直接看英文版，但是也可以切换繁体中文，比较友好。</p>
-<p>这里都是比较常用的 SQL 命令，给你一个需求，你写 SQL 语句实现正确的查询结果。<strong>最重要的是，这里不仅对每个命令的用法有详细解释，每个专题后面还有选择题（quiz），而且有判题系统，甚至有的比较难的题目还有视频讲解</strong>：</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714213845.jpeg" srcset="/img/loading.gif" alt="img"></p>
-<p>至于难度，循序渐进，即便对新手也很友好，靠后的问题确实比较有技巧性，相信这是热爱思维挑战的人喜欢的！LeetCode 也有 SQL 相关的题目，不过难度一般比较大，我觉得 SQLZOO 刷完基础 SQL 命令再去 LeetCode 刷比较合适。</p>
-<p>网站地址：</p>
-<p><a href="https://sqlzoo.net/" target="_blank" rel="noopener">https://sqlzoo.net/</a></p>
-<p>以上就是我想推荐的几个网站，没有什么技术是刷题学不会的，如果有，就多刷一些！</p>
+<div class="note note-success">
+            <p>转载自公众号：<a href="https://mp.weixin.qq.com/s/VdeQpFCL3GGsfOKrIRW6Hw" target="_blank" rel="noopener">labuladong</a> </p>
+          </div> 
+
+<hr>
+<p>以前我用 Git，就知道<code>add .</code>，然后<code>commit -m</code>，最后<code>push origin master</code>一套带走，或者就是把 Git 作为下载器，去<code>clone</code>别人的项目。但是在工作中呢，和别人一起开发代码，就需要处理一些复杂情况，比如解决冲突，比如手残恢复，等等等实用场景，这些我在后文都会列举。</p>
+<p>对于工具的学习，我认为应该多做减法，只捡最有用的学，那些奇技淫巧不学也罢，应该把时间投入更有价值的事情中。</p>
+<p><strong>所以本文不是一个大而全 Git 命令的使用手册，而是根据实际工作中最常见问题，提供小而美的解决方案，仅仅涉及四个命令：<code>add</code>，<code>commit</code>，<code>reset</code>，<code>checkout</code></strong>。</p>
+<p>PS： <a href="https://www.yossi.top/2020/07/12/刷题学习-GitSQL正则表达式/" target="_blank" rel="noopener">一起刷题学习 Git/SQL/正则表达式 </a>介绍了一个可视化学习 Git 的网站，非常优秀，值得一刷。</p>
+<h3 id="一、预备知识"><a href="#一、预备知识" class="headerlink" title="一、预备知识"></a>一、预备知识</h3><p>首先，在进入 Git 的各种神仙操作之前，<strong>一定要明白 git 的三个「分区」是什么，否则的话你一定没办法真正理解 Git 的原理</strong>。</p>
+<p>本地 Git 的三个分区分别是：<code>working directory</code>，<code>stage/index area</code>，<code>commit history</code>。</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714161344.png" srcset="/img/loading.gif" alt="https://rogerdudler.github.io/git-guide"><a href="https://rogerdudler.github.io/git-guide" target="_blank" rel="noopener">https://rogerdudler.github.io/git-guide</a></p>
+<p><strong><code>working directory</code>是「工作目录」，也就是我们肉眼能够看到的文件</strong>，后文我们称其为<code>work dir</code>区。</p>
+<p>当我们在<code>work dir</code>中<strong>执行<code>git add</code>相关命令后，就会把<code>work dir</code>中的修改添加到「暂存区」<code>stage area</code>（或者叫<code>index area</code>）中去</strong>，后文我们称暂存区为<code>stage</code><br>区。</p>
+<p>当<code>stage</code>中存在修改时，我们<strong>使用<code>git commit</code>相关命令之后，就会把<code>stage</code>中的修改保存到「提交历史」<code>commit history</code>中</strong>，也就是<code>HEAD</code>指针指向的位置。后文我们称「提交历史」为<code>history</code>区。</p>
+<p>关于<code>commit history</code>我们多说几句，任何修改只要进入<code>commit history</code>，基本可以认为永远不会丢失了。每个<code>commit</code>都有一个唯一的 Hash 值，我们经常说的<code>HEAD</code>或者<code>master</code>分支，都可以理解为一个指向某个<code>commit</code>的指针。</p>
+<p><code>work dir</code>和<code>stage</code>区域的状态，可以通过命令<code>git status</code>来查看，<code>history</code>区域的提交历史可以通过<code>git log</code>命令来查看。</p>
+<p>好的，如果上面的内容你都能够理解，那么本文就完全围绕这三个概念展开，下面就是一个「状态转移图」：</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714161345.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<h3 id="二、本地-Git-极简教程"><a href="#二、本地-Git-极简教程" class="headerlink" title="二、本地 Git 极简教程"></a>二、本地 Git 极简教程</h3><p><strong>需求一，如何把<code>work dir</code>中的修改加入<code>stage</code></strong>。</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714161346.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p>这个是最简单，使用 <strong><code>git add</code></strong> 相关的命令就行了。顺便一提，<code>add</code>有个别名叫做<code>stage</code>，也就是说你可能见到<code>git stage</code>相关的命令，这个命令和<code>git add</code>命令是完全一样的。</p>
+<p><strong>风险等级：无风险。</strong></p>
+<p>理由：不会改变任或撤销任何已作出的修改，而且还会将<code>work dir</code>中未追踪的修改（Untracked file）添加到暂存区<code>stage</code>中进行追踪。</p>
+<p><strong>需求二，如何把<code>stage</code>中的修改还原到<code>work dir</code>中</strong>。</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200714161347.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p>这个需求很常见，也很重要，比如我先将当前<code>work dir</code>中的修改添加到<code>stage</code>中，然后又对<code>work dir</code>中的文件进行了修改，但是又后悔了，如何把<code>work dir</code>中的全部或部分文件还原成<code>stage</code>中的样子呢？</p>
+<p>来个实际场景，我先新建两个文件，然后把他们都加到<code>stage</code>：</p>
+<div class="hljs"><pre><code class="hljs livecodeserver">$ touch <span class="hljs-keyword">a</span>.txt b.txt
+$ git <span class="hljs-built_in">add</span> .
+$ git status
+On branch master
+Changes <span class="hljs-built_in">to</span> be committed:
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   <span class="hljs-keyword">a</span>.txt
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   b.txt</code></pre></div>
+
+<p>然后我又修改了<code>a.txt</code>文件：</p>
+<div class="hljs"><pre><code class="hljs livecodeserver">$ echo hello world &gt;&gt; <span class="hljs-keyword">a</span>.txt
+$ git status
+On branch master
+Changes <span class="hljs-built_in">to</span> be committed:
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   <span class="hljs-keyword">a</span>.txt
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   b.txt
+
+Changes <span class="hljs-keyword">not</span> staged <span class="hljs-keyword">for</span> commit:
+    modified:   <span class="hljs-keyword">a</span>.txt</code></pre></div>
+
+<p>现在，我后悔了，我认为不应该修改<code>a.txt</code>，我想把它还原成<code>stage</code>中的空文件，怎么办？</p>
+<p>答案是，使用 <strong><code>checkout</code></strong> 命令：</p>
+<div class="hljs"><pre><code class="hljs livecodeserver">$ git checkout <span class="hljs-keyword">a</span>.txt
+Updated <span class="hljs-number">1</span> path <span class="hljs-built_in">from</span> <span class="hljs-keyword">the</span> index
+
+$ git status
+On branch master
+Changes <span class="hljs-built_in">to</span> be committed:
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   <span class="hljs-keyword">a</span>.txt
+    <span class="hljs-built_in">new</span> <span class="hljs-built_in">file</span>:   b.txt</code></pre></div>
+
+<p>看到了么，输出显示从<code>index</code>区（也就是<code>stage</code>区）更新了一个文件，也就是把<code>work dir</code>中<code>a.txt</code>文件还原成了<code>stage</code>中的状态（一个空文件）。</p>
+<p>当然，如果<code>work dir</code>中被修改的文件很多，可以使用通配符全部恢复成<code>stage</code>：</p>
+<div class="hljs"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git checkout .</code></pre></div>
+
+<p>有一点需要指出的是，<code>checkout</code>命令只会把被「修改」的文件恢复成<code>stage</code>的状态，如果<code>work dir</code>中新增了新文件，你使用<code>git checkout .</code>是不会删除新文件的。</p>
+<p><strong>风险等级：中风险。</strong></p>
+<p>理由：在<code>work dir</code>做出的「修改」会被<code>stage</code>覆盖，无法恢复。所以使用该命令你应该确定<code>work dir</code>中的修改可以抛弃。</p>
+<p><strong>需求三，将<code>stage</code>区的文件添加到<code>history</code>区</strong>。</p>
+<p><img src="/child/ckcq6tguv0010g9vag1xx6ela/youxi/Desktop/hexo/img/20200714161346.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p>很简单，就是 <strong><code>git commit</code></strong> 相关的命令，一般我们就是这样用的：</p>
+<div class="hljs"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git commit -m <span class="hljs-string">'一些描述'</span></code></pre></div>
+
+<p>再简单提一些常见场景， 比如说<code>commit</code>完之后，突然发现一些错别字需要修改，又不想为改几个错别字而新开一个<code>commit</code>到<code>history</code>区，那么就可以使用下面这个命令：</p>
+<div class="hljs"><pre><code class="hljs pgsql">$ git <span class="hljs-keyword">commit</span> <span class="hljs-comment">--amend</span></code></pre></div>
+
+<p>这样就是把错别字的修改和之前的那个<code>commit</code>中的修改合并，作为一个<code>commit</code>提交到<code>history</code>区。</p>
+<p><strong>风险等级：无风险。</strong></p>
+<p>理由：不会改变任或撤销任何已作出的修改，而且还会将<code>stage</code>区的修改加入<code>history</code>区并分配一个 Hash 值。只要不乱动本地的<code>.git</code>文件夹，进入<code>history</code>的修改就永远不会丢失。</p>
+<p><strong>需求四，将<code>history</code>区的文件还原到<code>stage</code>区</strong>。</p>
+<p><img src="/child/ckcq6tguv0010g9vag1xx6ela/youxi/Desktop/hexo/img/20200714161346-20200715102550918.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p>这个需求很常见，比如说我用了一个<code>git add .</code>一股脑把所有修改加入<code>stage</code>，但是突然想起来文件<code>a.txt</code>中的代码我还没写完，不应该把它<code>commit</code>到<code>history</code>区，所以我得把它从<code>stage</code>中撤销，等后面我写完了再提交。</p>
+<div class="hljs"><pre><code class="hljs routeros">$ echo<span class="hljs-built_in"> aaa </span>&gt;&gt; a.txt; echo bbb &gt;&gt; b.txt;
+$ git <span class="hljs-builtin-name">add</span> .
+$ git status
+On branch master
+Changes <span class="hljs-keyword">to</span> be committed:
+    modified:   a.txt
+    modified:   b.txt</code></pre></div>
+
+<p>如何把<code>a.txt</code>从<code>stage</code>区还原出来呢？可以使用 <strong><code>git reset</code></strong> 命令：</p>
+<div class="hljs"><pre><code class="hljs sql">$ git <span class="hljs-keyword">reset</span> a.txt
+
+$ git <span class="hljs-keyword">status</span>
+<span class="hljs-keyword">On</span> branch <span class="hljs-keyword">master</span>
+Changes <span class="hljs-keyword">to</span> be committed:
+    modified:   b.txt
+
+Changes <span class="hljs-keyword">not</span> staged <span class="hljs-keyword">for</span> <span class="hljs-keyword">commit</span>:
+    modified:   a.txt</code></pre></div>
+
+<p>你看，这样就可以把<code>a.txt</code>文件从<code>stage</code>区移出，这时候进行<code>git commit</code>相关的操作就不会把这个文件一起提交到<code>history</code>区了。</p>
+<p>上面的这个命令是一个简写，实际上<code>reset</code>命令的完整写法如下：</p>
+<div class="hljs"><pre><code class="hljs pgsql">$ git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--mixed HEAD a.txt</span></code></pre></div>
+
+<p>其中，<code>mixed</code>是一个模式（mode）参数，如果<code>reset</code>省略这个选项的话默认是<code>mixed</code>模式；<code>HEAD</code>指定了一个历史提交的 hash 值；<code>a.txt</code>指定了一个或者多个文件。</p>
+<p><strong>该命令的自然语言描述是：不改变<code>work dir</code>中的任何数据，将<code>stage</code>区域中的<code>a.txt</code>文件还原成<code>HEAD</code>指向的<code>commit history</code>中的样子</strong>。就相当于把对<code>a.txt</code>的修改从<code>stage</code>区撤销，但依然保存在<code>work dir</code>中，变为<code>unstage</code>的状态。</p>
+<p><strong>风险等级：低风险。</strong></p>
+<p>理由：不会改变<code>work dir</code>中的数据，会改变<code>stage</code>区的数据，所以应确保<code>stage</code>中被改动数据是可以抛弃的。</p>
+<p><strong>需求五，将<code>work dir</code>的修改提交到<code>history</code>区</strong>。</p>
+<p><img src="/child/ckcq6tguv0010g9vag1xx6ela/youxi/Desktop/hexo/img/20200714161346-20200715102642324.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p>这个需求很简单啦，先<code>git add</code>然后<code>git commit</code>就行了，或者一个快捷方法是使用命令<code>git commit -a</code>。</p>
+<p><strong>风险等级：无风险。</strong></p>
+<p>理由：显而易见。</p>
+<p><strong>需求六，将<code>history</code>区的历史提交还原到<code>work dir</code>中</strong>。</p>
+<p><img src="/child/ckcq6tguv0010g9vag1xx6ela/youxi/Desktop/hexo/img/20200714161346-20200715102648004.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p>这个场景，我说一个极端一点的例子：比如我从 GitHub 上<code>clone</code>了一个项目，然后乱改了一通代码，结果发现我写的代码根本跑不通，于是后悔了，干脆不改了，我想恢复成最初的模样，怎么办？</p>
+<p>依然是使用<code>checkout</code>命令，但是和之前的使用方式有一些不同：</p>
+<div class="hljs"><pre><code class="hljs angelscript">$ git checkout HEAD .
+Updated <span class="hljs-number">12</span> paths <span class="hljs-keyword">from</span> d480c4f</code></pre></div>
+
+<p>这样，<code>work dir</code>和<code>stage</code>中所有的「修改」都会被撤销，恢复成<code>HEAD</code>指向的那个<code>history commit</code>。</p>
+<p>注意，类似之前通过<code>stage</code>恢复<code>work dir</code>的<code>checkout</code>命令，这里撤销的也只是修改，新增的文件不会被撤销。</p>
+<p>当然，只要找到任意一个<code>commit</code>的 HASH 值，<code>checkout</code>命令可就以将文件恢复成任一个<code>history commit</code>中的样子：</p>
+<div class="hljs"><pre><code class="hljs angelscript">$ git checkout <span class="hljs-number">2</span>bdf04a some_test.go
+Updated <span class="hljs-number">1</span> path <span class="hljs-keyword">from</span> <span class="hljs-number">2</span>bdf04a
+# 前文的用法显示 update <span class="hljs-keyword">from</span> index</code></pre></div>
+
+<p>比如，我改了某个测试文件，结果发现测试跑不过了，所以就把该文件恢复到了它能跑过的那个历史版本……</p>
+<p><strong>风险等级：高风险。</strong></p>
+<p>理由：这个操作会将指定文件在<code>work dir</code>的数据恢复成指定<code>commit</code>的样子，且会删除该文件在<code>stage</code>中的数据，都无法恢复，所以应该慎重使用。</p>
+<h3 id="三、其他技巧"><a href="#三、其他技巧" class="headerlink" title="三、其他技巧"></a>三、其他技巧</h3><p><strong>需求一，合并多个<code>commit</code></strong>。</p>
+<p>比如说我本地从<code>17bd20c</code>到<code>HEAD</code>有多个<code>commit</code>，但我希望把他们合并成一个<code>commit</code>推到远程仓库，这时候就可以使用<code>reset</code>命令：</p>
+<div class="hljs"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git reset <span class="hljs-number">17</span>bd20c
+<span class="hljs-variable">$ </span>git add .
+<span class="hljs-variable">$ </span>git commit -m <span class="hljs-string">'balabala'</span></code></pre></div>
+
+<p>回顾一下刚才说的<code>reset</code>命令的作用，相当于把 HEAD 移到了<code>17bd20c</code>这个<code>commit</code>，而且不会修改<code>work dir</code>中的数据，所以只要<code>add</code>再<code>commit</code>，就相当于把中间的多个<code>commit</code>合并到一个了。</p>
+<p><strong>需求二，由于<code>HEAD</code>指针的回退，导致有的<code>commit</code>在<code>git log</code>命令中无法看到，怎么得到它们的 Hash 值呢</strong>？</p>
+<p>再重复一遍，只要你不乱动本地的<code>.git</code>文件夹，任何修改只要提交到<code>commit history</code>中，都永远不会丢失，看不到某些<code>commit</code>只是因为它们不是我们当前<code>HEAD</code>位置的「历史」提交，我们可以使用如下命令查看操作记录：</p>
+<div class="hljs"><pre><code class="hljs angelscript">$ git <span class="hljs-built_in">ref</span>log</code></pre></div>
+
+<p>比如<code>reset</code>，<code>checkout</code>等等关键操作都会在这里留下记录，所有<code>commit</code>的 Hash 值都能在这里找到，所以如果你发现有哪个<code>commit</code>突然找不到了，一定都可以在这里找到。</p>
+<p><strong>需求三，怎么解决冲突</strong>？</p>
+<p>记住，Git 虽然高大上，但也不要迷恋，一定要懂得借助先进的工具。</p>
+<p>比较流行的代码编辑器或者 IDE 都会集成方便的可视化 Git 工具，至于解决冲突，可视化的表现方式不是比你在命令行里<code>git diff</code>看半天要清晰明了得多？只需要点点点就行了。</p>
+<p>所以说，只要明白本文讲的这些基本操作，够你用的了，平时能用图形化工具就多用图形化工具，毕竟工具都是为人服务的。</p>
+<p>别忘了看看 <a href="https://www.yossi.top/2020/07/12/刷题学习-GitSQL正则表达式/" target="_blank" rel="noopener">一起刷题学习 Git/SQL/正则表达式</a>。</p>
 
             </article>
             <hr>
@@ -277,21 +377,13 @@
                     
                       <a class="hover-with-bg" href="/categories/Git/">Git</a>
                     
-                      <a class="hover-with-bg" href="/categories/Git/SQL/">SQL</a>
-                    
-                      <a class="hover-with-bg" href="/categories/Git/SQL/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-                    
                   </div>
                 
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Git%E7%BB%83%E4%B9%A0/">Git练习</a>
-                    
-                      <a class="hover-with-bg" href="/tags/SQL/">SQL</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%AD%A3%E5%88%99/">正则</a>
+                      <a class="hover-with-bg" href="/tags/Git%E6%8A%80%E5%B7%A7/">Git技巧</a>
                     
                   </div>
                 
@@ -302,9 +394,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/year07131524ckcq6mvjn001ia2vagswi6vil">
+                      <a href="/ckcq6tgu20006g9va8lf2hhpd.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">写给大忙人看的操作系统</span>
+                        <span class="hidden-mobile">工作流一目了然，用动图展示10大Git命令</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -312,8 +404,8 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/year07121924ckcq6mvj5000ra2vad4fub0rw">
-                        <span class="hidden-mobile">工作流一目了然，用动图展示10大Git命令</span>
+                      <a href="/ckcq6tgu10005g9vaduxbcu1y.html">
+                        <span class="hidden-mobile">Git常用指令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -634,7 +726,7 @@
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/year07122024ckcq6mvj0000la2vaea9u3mer');
+          var target = decodeURI('/ckcq6tguv0010g9vag1xx6ela.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -728,7 +820,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "在线学习网站，刷题学习 Git/SQL/正则表达式&nbsp;",
+        "用四个命令总结 Git 的所有套路&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 90,
