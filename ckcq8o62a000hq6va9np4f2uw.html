@@ -287,7 +287,7 @@ Changes <span class="hljs-built_in">to</span> be committed:
 <p><strong>风险等级：中风险。</strong></p>
 <p>理由：在<code>work dir</code>做出的「修改」会被<code>stage</code>覆盖，无法恢复。所以使用该命令你应该确定<code>work dir</code>中的修改可以抛弃。</p>
 <p><strong>需求三，将<code>stage</code>区的文件添加到<code>history</code>区</strong>。</p>
-<p><img src="/child/ckcq85o5m000bc8va738qhvjo/youxi/Desktop/hexo/img/20200714161346.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="/child/ckcq8o62a000hq6va9np4f2uw/youxi/Desktop/hexo/img/20200714161346.jpeg" srcset="/img/loading.gif" alt="img"></p>
 <p>很简单，就是 <strong><code>git commit</code></strong> 相关的命令，一般我们就是这样用的：</p>
 <div class="hljs"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>git commit -m <span class="hljs-string">'一些描述'</span></code></pre></div>
 
@@ -298,7 +298,7 @@ Changes <span class="hljs-built_in">to</span> be committed:
 <p><strong>风险等级：无风险。</strong></p>
 <p>理由：不会改变任或撤销任何已作出的修改，而且还会将<code>stage</code>区的修改加入<code>history</code>区并分配一个 Hash 值。只要不乱动本地的<code>.git</code>文件夹，进入<code>history</code>的修改就永远不会丢失。</p>
 <p><strong>需求四，将<code>history</code>区的文件还原到<code>stage</code>区</strong>。</p>
-<p><img src="/child/ckcq85o5m000bc8va738qhvjo/youxi/Desktop/hexo/img/20200714161346-20200715102550918.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="/child/ckcq8o62a000hq6va9np4f2uw/youxi/Desktop/hexo/img/20200714161346-20200715102550918.jpeg" srcset="/img/loading.gif" alt="img"></p>
 <p>这个需求很常见，比如说我用了一个<code>git add .</code>一股脑把所有修改加入<code>stage</code>，但是突然想起来文件<code>a.txt</code>中的代码我还没写完，不应该把它<code>commit</code>到<code>history</code>区，所以我得把它从<code>stage</code>中撤销，等后面我写完了再提交。</p>
 <div class="hljs"><pre><code class="hljs routeros">$ echo<span class="hljs-built_in"> aaa </span>&gt;&gt; a.txt; echo bbb &gt;&gt; b.txt;
 $ git <span class="hljs-builtin-name">add</span> .
@@ -328,12 +328,12 @@ Changes <span class="hljs-keyword">not</span> staged <span class="hljs-keyword">
 <p><strong>风险等级：低风险。</strong></p>
 <p>理由：不会改变<code>work dir</code>中的数据，会改变<code>stage</code>区的数据，所以应确保<code>stage</code>中被改动数据是可以抛弃的。</p>
 <p><strong>需求五，将<code>work dir</code>的修改提交到<code>history</code>区</strong>。</p>
-<p><img src="/child/ckcq85o5m000bc8va738qhvjo/youxi/Desktop/hexo/img/20200714161346-20200715102642324.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="/child/ckcq8o62a000hq6va9np4f2uw/youxi/Desktop/hexo/img/20200714161346-20200715102642324.jpeg" srcset="/img/loading.gif" alt="img"></p>
 <p>这个需求很简单啦，先<code>git add</code>然后<code>git commit</code>就行了，或者一个快捷方法是使用命令<code>git commit -a</code>。</p>
 <p><strong>风险等级：无风险。</strong></p>
 <p>理由：显而易见。</p>
 <p><strong>需求六，将<code>history</code>区的历史提交还原到<code>work dir</code>中</strong>。</p>
-<p><img src="/child/ckcq85o5m000bc8va738qhvjo/youxi/Desktop/hexo/img/20200714161346-20200715102648004.jpeg" srcset="/img/loading.gif" alt="img"></p>
+<p><img src="/child/ckcq8o62a000hq6va9np4f2uw/youxi/Desktop/hexo/img/20200714161346-20200715102648004.jpeg" srcset="/img/loading.gif" alt="img"></p>
 <p>这个场景，我说一个极端一点的例子：比如我从 GitHub 上<code>clone</code>了一个项目，然后乱改了一通代码，结果发现我写的代码根本跑不通，于是后悔了，干脆不改了，我想恢复成最初的模样，怎么办？</p>
 <p>依然是使用<code>checkout</code>命令，但是和之前的使用方式有一些不同：</p>
 <div class="hljs"><pre><code class="hljs angelscript">$ git checkout HEAD .
@@ -394,7 +394,7 @@ Updated <span class="hljs-number">1</span> path <span class="hljs-keyword">from<
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/ckcq85o5k000ac8vabh5x60jx.html">
+                      <a href="/ckcq8o626000bq6va6d3158qz.html">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">工作流一目了然，用动图展示10大Git命令</span>
                         <span class="visible-mobile">上一篇</span>
@@ -404,7 +404,7 @@ Updated <span class="hljs-number">1</span> path <span class="hljs-keyword">from<
                   <div class="post-next col-6">
                     
                     
-                      <a href="/ckcq85o590001c8va3mjscgrw.html">
+                      <a href="/ckcq8o61f0001q6va3dcuf6qf.html">
                         <span class="hidden-mobile">Git常用指令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -726,7 +726,7 @@ Updated <span class="hljs-number">1</span> path <span class="hljs-keyword">from<
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/ckcq85o5m000bc8va738qhvjo.html');
+          var target = decodeURI('/ckcq8o62a000hq6va9np4f2uw.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
