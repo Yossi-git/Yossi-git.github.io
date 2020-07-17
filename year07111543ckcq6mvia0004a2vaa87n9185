@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yossi">
+  <meta name="keywords" content="">
+  <title>Git常用指令 - YoX</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/an-old-hope.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>YoX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/post.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-11 15:43">
+      2020年7月11日 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年7月14日 下午
+                
+              </p>
+            
+            <article class="markdown-body">
+              <p>这篇文章，我把那些命令都分类总结了一下（当然，是参考别人的分类的），这些总结大部分来自于我买的一个 Git 鼠标垫，主要是为了以后自己忘记了方便查找。</p>
+<a id="more"></a>
+
+<h2 id="一、Git-配置相关"><a href="#一、Git-配置相关" class="headerlink" title="一、Git 配置相关"></a>一、Git 配置相关</h2><p>如果你首次使用 Git，那刚开始首先是需要配置各种身份信息的，这样当你提交相关任务的时候，别人才能知道这个 commit 是谁提交的。</p>
+<h4 id="（1）、Git-最小配置"><a href="#（1）、Git-最小配置" class="headerlink" title="（1）、Git 最小配置"></a>（1）、Git 最小配置</h4><p>1、配置全局账户，也就是该账户对所有的 Git 仓库都有效</p>
+<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global user.name <span class="hljs-string">'你的账户名称'</span>
+git<span class="hljs-built_in"> config </span>--global user.email <span class="hljs-string">'你的 Email'</span></code></pre></div>
+
+<p>2、配置局部账户，也就是该账户只对当前 Git 仓库有效</p>
+<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--local user.name <span class="hljs-string">'你的账户名称'</span> 
+git<span class="hljs-built_in"> config </span>--local user.email <span class="hljs-string">'你的 Email'</span></code></pre></div>
+
+<p>注意，不同点就是一个参数是 global（全局），一个是 local(本地)</p>
+<h4 id="（2）、查看相关配置情况"><a href="#（2）、查看相关配置情况" class="headerlink" title="（2）、查看相关配置情况"></a>（2）、查看相关配置情况</h4><p>配置了之后，显然有时候是需要查看我们当前配置的相关情况的，可以使用如下命令</p>
+<p>1、查看 global 类型的配置情况</p>
+<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global --list</code></pre></div>
+
+<p>2、查看某个仓库下的配置情况</p>
+<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--local --list</code></pre></div>
+
+<h2 id="二、本地基本操作"><a href="#二、本地基本操作" class="headerlink" title="二、本地基本操作"></a>二、本地基本操作</h2><p>这部分命令有点多，也是使用的最频繁的命令了，待我一一列举出来，建议收藏</p>
+<h4 id="（1）、基本操作"><a href="#（1）、基本操作" class="headerlink" title="（1）、基本操作"></a>（1）、基本操作</h4><p>1、查看变更情况</p>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git status</span></code></pre></div>
+
+<p>2、查看当前工作在哪个分支上</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-v</code></pre></div>
+
+<p>3、切换到指定分支</p>
+<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> checkout 指定分支的名称</code></pre></div>
+
+<p>4、把<strong>当前目录及其子目录</strong>下所有变更都加入到<strong>暂存区</strong></p>
+<div class="hljs"><pre><code class="hljs avrasm">git <span class="hljs-keyword">add</span> . // 注意，<span class="hljs-keyword">add</span> 后面是一个 <span class="hljs-string">'.'</span>；</code></pre></div>
+
+<p>5、把仓库内<strong>所有</strong>变更都假如到暂存区</p>
+<div class="hljs"><pre><code class="hljs dockerfile">git <span class="hljs-keyword">add</span><span class="bash"> -A</span></code></pre></div>
+
+<p>6、把指定文件添加到暂存区</p>
+<div class="hljs"><pre><code class="hljs routeros">git <span class="hljs-builtin-name">add</span> 文件1 文件2 <span class="hljs-built_in">..</span>. 文件n</code></pre></div>
+
+<p>7、创建正式的 commit，也就是把当前的数据提交上去</p>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git commit</span></code></pre></div>
+
+<h4 id="（二）、比较差异"><a href="#（二）、比较差异" class="headerlink" title="（二）、比较差异"></a>（二）、比较差异</h4><p>1、比较某文件工作区和暂存区的差异</p>
+<div class="hljs"><pre><code class="hljs maxima">git <span class="hljs-built_in">diff</span> 某文件</code></pre></div>
+
+<p>2、比较某文件暂存区和 HEAD 的差异</p>
+<div class="hljs"><pre><code class="hljs mipsasm">git <span class="hljs-keyword">diff </span>--<span class="hljs-keyword">cache </span>某文件</code></pre></div>
+
+<p>3、比较工作区和暂存区的所有差异</p>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git diff</span></code></pre></div>
+
+<p>4、比较暂存区和 HEAD 的所有差异</p>
+<div class="hljs"><pre><code class="hljs ada">git diff <span class="hljs-comment">--cache</span></code></pre></div>
+
+<h4 id="（3）、暂存区与工作区之间回滚"><a href="#（3）、暂存区与工作区之间回滚" class="headerlink" title="（3）、暂存区与工作区之间回滚"></a>（3）、暂存区与工作区之间回滚</h4><p>1、把工作区指定文件恢复成和暂存区一样</p>
+<div class="hljs"><pre><code class="hljs angelscript">git checkout 文件<span class="hljs-number">1</span> 文件<span class="hljs-number">2</span> ... 文件n</code></pre></div>
+
+<p>2、把暂存区指定文件回复和 HEAD 一样</p>
+<div class="hljs"><pre><code class="hljs angelscript">git reset 文件<span class="hljs-number">1</span> 文件<span class="hljs-number">2</span> ... 文件n</code></pre></div>
+
+<p>3、把暂存区和工作区所有文件恢复成和 HEAD 一样</p>
+<div class="hljs"><pre><code class="hljs pgsql">git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--hard</span></code></pre></div>
+
+<p>4、用 difftool 比较任意两个 commit 的差异</p>
+<div class="hljs"><pre><code class="hljs mipsasm">git <span class="hljs-keyword">difftool </span>commit1 commit2</code></pre></div>
+
+<blockquote>
+<p>注意，从工作区回滚到暂存区则用 checkout ，否则用 reset</p>
+</blockquote>
+<h4 id="（四）、其他"><a href="#（四）、其他" class="headerlink" title="（四）、其他"></a>（四）、其他</h4><p>查看哪些文件没有被 Git 管控</p>
+<div class="hljs"><pre><code class="hljs livecodeserver">git ls-<span class="hljs-built_in">files</span> <span class="hljs-comment">--others</span></code></pre></div>
+
+<h2 id="三、加塞临时任务处理"><a href="#三、加塞临时任务处理" class="headerlink" title="三、加塞临时任务处理"></a>三、加塞临时任务处理</h2><p>1、把未处理完的变更先保存到 stash 中</p>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git stash</span></code></pre></div>
+
+<p>2、临时任务处理完后继续之前的工作</p>
+<div class="hljs"><pre><code class="hljs maxima">git stash <span class="hljs-built_in">pop</span> // <span class="hljs-built_in">pop</span> 相当于栈的出栈和入栈一样，把之前的任务弹出来
+或者
+git stash <span class="hljs-built_in">apply</span> // 和 <span class="hljs-built_in">pop</span> 不同的是， <span class="hljs-built_in">apply</span> 相当于从栈顶把任务取出来，但是不过从栈中把任务移除</code></pre></div>
+
+<p>3、查看所有的 stash</p>
+<div class="hljs"><pre><code class="hljs applescript">git stash <span class="hljs-built_in">list</span></code></pre></div>
+
+<p>4、取回某次 stash 的变更</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> stash <span class="hljs-keyword">pop </span>stash <span class="hljs-comment">@&#123;数字n&#125;</span></code></pre></div>
+
+<h2 id="四、修改个人分支历史"><a href="#四、修改个人分支历史" class="headerlink" title="四、修改个人分支历史"></a>四、修改个人分支历史</h2><p>我们的仓库的内容每次变更执行 commit 的时候，都会生成一个新的 commit，不过有时候，我们不想产生新的 commit，而是想要通过修改之前的 commit 来变更仓库的内容，那么就可以使用如下命令了</p>
+<p>1、修改最后一次 commit</p>
+<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-number">1</span>、在工作区中修改文件
+<span class="hljs-number">2</span>、git add
+<span class="hljs-number">3</span>、git commit --amend</code></pre></div>
+
+<p>2|、修改中间的 commit(假设代号为 X)</p>
+<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-number">1.</span> git rebase -i X前面的一个 commit 的 id
+<span class="hljs-number">2.</span> 在工作区修改文件
+<span class="hljs-number">3.</span> git add
+<span class="hljs-number">4.</span> git rebase --contiue</code></pre></div>
+
+<h2 id="五、查看变更日志等"><a href="#五、查看变更日志等" class="headerlink" title="五、查看变更日志等"></a>五、查看变更日志等</h2><p>1、当前分支各个 commit 用一行显示</p>
+<div class="hljs"><pre><code class="hljs applescript">git <span class="hljs-built_in">log</span> <span class="hljs-comment">--online</span></code></pre></div>
+
+<p>2、显示最近的 n 个 commit</p>
+<div class="hljs"><pre><code class="hljs excel">git <span class="hljs-built_in">log</span> -<span class="hljs-built_in">n</span></code></pre></div>
+
+<p>3、用图示显示所有的分支历史</p>
+<div class="hljs"><pre><code class="hljs brainfuck"><span class="hljs-comment">git</span> <span class="hljs-comment">log</span> --<span class="hljs-comment">online</span> --<span class="hljs-comment">graph</span> --<span class="hljs-comment">all</span></code></pre></div>
+
+<p>4、查看涉及到某文件变更的所有 commit</p>
+<div class="hljs"><pre><code class="hljs 1c">git <span class="hljs-built_in">log</span> 某文件</code></pre></div>
+
+<p>5、某文件各行最后修改对应的 commit 以及作者</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">blame </span>某文件</code></pre></div>
+
+<h2 id="六、分支与标签"><a href="#六、分支与标签" class="headerlink" title="六、分支与标签"></a>六、分支与标签</h2><h4 id="1、创建新分支"><a href="#1、创建新分支" class="headerlink" title="1、创建新分支"></a>1、创建新分支</h4><p>基于当前分支创建新分支</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>新分支</code></pre></div>
+
+<p>基于指定分支创建新分支</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>新分支 已有分支</code></pre></div>
+
+<p>基于某个 commit 创建分支</p>
+<div class="hljs"><pre><code class="hljs sql">git branch 新分支 某个 <span class="hljs-keyword">commit</span> 的<span class="hljs-keyword">id</span></code></pre></div>
+
+<p>创建分支并且切换到该分支</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> chechout -<span class="hljs-keyword">b </span>新分支</code></pre></div>
+
+<h4 id="2、列出分支"><a href="#2、列出分支" class="headerlink" title="2、列出分支"></a>2、列出分支</h4><p>列出本地分支</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-v</code></pre></div>
+
+<p>列出本地和远端分支</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-av</code></pre></div>
+
+<p>列出远端所有分支</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-rv</code></pre></div>
+
+<p>列出名称符号某样式的远端分支</p>
+<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> branch -rv -l <span class="hljs-string">'某样式'</span></code></pre></div>
+
+<h4 id="3、删除分支"><a href="#3、删除分支" class="headerlink" title="3、删除分支"></a>3、删除分支</h4><p>安全删除本地某分支</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-d 要删除的分支</code></pre></div>
+
+<p>强行删除本地分支</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-D 要删除的分支</code></pre></div>
+
+<p>删除已合并到 master 分支的所有本地分支</p>
+<div class="hljs"><pre><code class="hljs crmsh">git branch --merged <span class="hljs-keyword">master</span> <span class="hljs-title">| grep</span> -v '^\*\| <span class="hljs-literal">master</span>' | xargs -n <span class="hljs-number">1</span> git branch -d</code></pre></div>
+
+<p>删除远端 origin 已不存在的所有本地分支</p>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git remote prune origin</span></code></pre></div>
+
+<h4 id="4、打标签"><a href="#4、打标签" class="headerlink" title="4、打标签"></a>4、打标签</h4><p>从 commit 打上标签</p>
+<div class="hljs"><pre><code class="hljs crmsh">git <span class="hljs-keyword">tag</span> <span class="hljs-title">标签名 commit</span> 的id</code></pre></div>
+
+<h2 id="七、两分支之间的集成"><a href="#七、两分支之间的集成" class="headerlink" title="七、两分支之间的集成"></a>七、两分支之间的集成</h2><p>1、把 A 分支合入到当前分支，且为 merge 创建 commit</p>
+<div class="hljs"><pre><code class="hljs cos">git <span class="hljs-keyword">merge</span> A分支</code></pre></div>
+
+<p>2、把 A 分支合入到 B 分支，且为 Merge 创建 commit</p>
+<div class="hljs"><pre><code class="hljs cos">git <span class="hljs-keyword">merge</span> A分支 B分支</code></pre></div>
+
+<p>3、把当前分支基于B分支做 rebase，以便把B分支合入到当前分支</p>
+<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> rebase B分支</code></pre></div>
+
+<p>4、把A分支基于B分支做rebase，以便把B分支合入到A分支</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> rebase <span class="hljs-keyword">B分支 </span>A分支</code></pre></div>
+
+<p>5、用 mergetool 解决冲突</p>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git mergetool</span></code></pre></div>
+
+<h2 id="八、和远端交互"><a href="#八、和远端交互" class="headerlink" title="八、和远端交互"></a>八、和远端交互</h2><p>1、列出所有 remote</p>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git remote -v</span></code></pre></div>
+
+<p>2、增加 remote</p>
+<div class="hljs"><pre><code class="hljs dockerfile">git remote <span class="hljs-keyword">add</span><span class="bash"> url地址</span></code></pre></div>
+
+<p>3、删除 remote</p>
+<div class="hljs"><pre><code class="hljs routeros">git remote <span class="hljs-builtin-name">remove</span> remote的名称</code></pre></div>
+
+<p>4、改变 remote 的name</p>
+<div class="hljs"><pre><code class="hljs coq">git remote <span class="hljs-built_in">rename</span> 旧名称 新名称</code></pre></div>
+
+<p>5、把远端所有分支和标签的变更都拉到本地</p>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git fetch remote</span></code></pre></div>
+
+<p>6、把远端分支的变更拉倒本地，且 merge 到本地分支</p>
+<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> pull remote名称 分支名</code></pre></div>
+
+<p>关于 pull 和 fetch 的区别不懂可以看这篇文章<a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247486636&idx=2&sn=b3d94e89b4bf2e7dba8b995dc694ccd8&scene=21#wechat_redirect" target="_blank" rel="noopener">从0学习Git：详解git pull和git fetch的区别</a></p>
+<p>7、把本地分支 push 到远端</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">push </span>remote名称 分支名</code></pre></div>
+
+<p>8、删除远端分支</p>
+<div class="hljs"><pre><code class="hljs gauss">git <span class="hljs-keyword">push</span> remote --<span class="hljs-keyword">delete</span> 远端分支名
+或者
+git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></div>
+
+<p>9、向远端提交指定标签</p>
+<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">push </span>remote 标签名</code></pre></div>
+
+<p>10、向远端提交所有标签</p>
+<div class="hljs"><pre><code class="hljs ada">git push remote <span class="hljs-comment">--tags</span></code></pre></div>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果把这些命令掌握了，那么 git 就顺手拈来了，不过很多命令是比较容易忘的，所有还是比较需要一份 git 手册，以后用到的时候多查几次，多用几次命令，相信就能够记住了。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/year07120924ckcq6mvj7000ta2vabvvfd67p">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">用四个命令总结 Git 的所有套路</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/year07101228ckcq6mvic0005a2vah6y16ay8">
+                        <span class="hidden-mobile">【干货】40 张图解的TCP三次握手和四次挥手面试题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "6kGBIHVkN1srcyRlkJzj74Ml-gzGzoHsz",
+          app_key: "Kh9FNmfHA3Rg81Btju7k0OBI",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: true,
+          serverURLs: "",
+        });
+      });
+    }
+    createObserver(loadValine, 'vcomments');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+    <div class="text-center py-3">
+        <div>
+            <!-- <a href="https://hexo.io" target="_blank" rel="nofollow noopener"> -->
+            <span>@2020</span>
+            <i class="iconfont icon-love"></i>
+            <a href="https://github.com/Yossi-git" target="_blank" style="color:rgb(0, 119, 167);text-decoration:underline;" rel="nofollow noopener">Yossi</a>
+        </div>
+        <div>
+            <span>由</span>
+            <a href="https://hexo.io/zh-cn/" target="_blank" style="color:rgb(0, 180, 250);text-decoration:underline;" rel="nofollow noopener">Hexo</a>
+            <span>驱动｜主题-</span>
+            <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" style="color:rgb(0, 180, 250);text-decoration:underline;" rel="nofollow noopener">Fluid</a>
+        </div>
+        <div>
+            <span id="timeDate">载入天数...</span>
+            <span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("06/28/2020 00:00:00"); //此处修改你的建站时间或者网站上线时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已经安全运行&nbsp" + dnum + "&nbsp天";
+                    document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+        </div>
+        
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+            
+
+                
+
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer>
+  (function () {
+    // 查询存储的记录
+    function getRecord(Counter, target) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({target})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {target, time: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    }
+
+    // 发起自增请求
+    function increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    }
+
+    // 构建自增请求体
+    function buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "time": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    }
+
+    // 校验是否为有效的 UV
+    function validUV() {
+      var key = 'LeanCloud_UV_Flag';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    }
+
+    function addCount(Counter) {
+      var enableIncr = 'true' === 'true' && window.location.hostname !== 'localhost';
+      var getterArr = [];
+      var incrArr = [];
+
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#leancloud-site-pv-container');
+      if (pvCtn || enableIncr) {
+        var pvGetter = getRecord(Counter, 'site-pv').then((record) => {
+          incrArr.push(buildIncrement(record.objectId))
+          var ele = document.querySelector('#leancloud-site-pv');
+          if (ele) {
+            ele.innerText = record.time + 1;
+            if (pvCtn) {
+              pvCtn.style.display = 'inline';
+            }
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#leancloud-site-uv-container');
+      if (uvCtn || enableIncr) {
+        var uvGetter = getRecord(Counter, 'site-uv').then((record) => {
+          var vuv = validUV();
+          vuv && incrArr.push(buildIncrement(record.objectId))
+          var ele = document.querySelector('#leancloud-site-uv');
+          if (ele) {
+            ele.innerText = record.time + (vuv ? 1 : 0);
+            if (uvCtn) {
+              uvCtn.style.display = 'inline';
+            }
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 如果是文章，请求文章的浏览数，并自增
+      if ('true' === 'true') {
+        var viewCtn = document.querySelector('#leancloud-post-views-container');
+        if (viewCtn || enableIncr) {
+          var target = decodeURI('/year07111543ckcq6mvia0004a2vaa87n9185');
+          var viewGetter = getRecord(Counter, target).then((record) => {
+            incrArr.push(buildIncrement(record.objectId))
+            if (viewCtn) {
+              var ele = document.querySelector('#leancloud-post-views');
+              if (ele) {
+                ele.innerText = (record.time || 0) + 1;
+                viewCtn.style.display = 'inline';
+              }
+            }
+          });
+          getterArr.push(viewGetter);
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && increment(Counter, incrArr);
+        })
+      }
+    }
+
+    var app_id = '6kGBIHVkN1srcyRlkJzj74Ml-gzGzoHsz'
+    var app_key = 'Kh9FNmfHA3Rg81Btju7k0OBI'
+    var server_url = 'https://6kgbihvk.lc-cn-n1-shared.com'
+
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': app_id,
+            'X-LC-Key': app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+
+      addCount(Counter);
+    }
+
+    var api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${ app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(resp => resp.json())
+        .then(({api_server}) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Git常用指令&nbsp;",
+      ],
+      cursorChar: "",
+      typeSpeed: 90,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+  
+  
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
+          }
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+</body>
+</html>

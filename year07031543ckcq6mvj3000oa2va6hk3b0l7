@@ -17,10 +17,19 @@
   <meta name="description" content="">
   <meta name="author" content="Yossi">
   <meta name="keywords" content="">
-  <title>标签 - Fluid，picgo，typora - YoX</title>
+  <title>算法笔记(一) - YoX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/an-old-hope.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -42,7 +51,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -130,7 +139,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('https://gitee.com/yossi/picture/raw/master/img/20200714212003.jpeg') no-repeat center center;
+         style="background: url('/img/post.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -138,6 +147,48 @@
             <span class="h2" id="subtitle">
               
             </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-03 15:43">
+      2020年7月3日 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      408 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      5
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -150,37 +201,166 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 1 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/year06301228ckcq6mviy000ka2va3bisf0rf" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">个人博客网站搭建教程</span>
-      <span style="float: right;">06-30</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年7月17日 晚上
+                
+              </p>
+            
+            <article class="markdown-body">
+              <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p><strong>本文所有算法均采用C/C++语言描述。</strong></p>
+<h2 id="浮点数的比较"><a href="#浮点数的比较" class="headerlink" title="浮点数的比较"></a>浮点数的比较</h2><p>由于计算机存储的数据并不是绝地精确，例如：<strong>3.14</strong>在计算机中存储值有可能是<strong>3.1400000000001</strong>，也有可能是<strong>3.13999999999999</strong>，而C/C++中的<code>“==”</code>操作是要求绝对相等才为<code>true</code>，所以需要引入一个极小数<code>eps</code>。</p>
+<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-keyword">const</span> <span class="hljs-built_in">double</span> eps = <span class="hljs-number">1e-8</span>;</code></pre></div>
+<p>为了方便比较操作，采用宏定义比较函数</p>
+<div class="hljs"><pre><code class="hljs less"><span class="hljs-selector-id">#define</span> <span class="hljs-selector-tag">Equ</span>(a,b) ((fabs((a)-(b)))&lt;(eps)) <span class="hljs-comment">//等于</span>
+<span class="hljs-selector-id">#define</span> <span class="hljs-selector-tag">More</span>(a,b) (((a)-(b))&gt;(eps)) <span class="hljs-comment">//大于</span>
+<span class="hljs-selector-id">#define</span> <span class="hljs-selector-tag">Less</span>(a,b) (((a)-(b))&lt;(-eps)) <span class="hljs-comment">//小于</span>
+<span class="hljs-selector-id">#define</span> <span class="hljs-selector-tag">MoreEqu</span>(a,b) (((a)-(b))&gt;(-eps)) <span class="hljs-comment">//大于等于</span>
+<span class="hljs-selector-id">#define</span> <span class="hljs-selector-tag">LessEqu</span>(a,b) (((a)-(b))&lt;(eps)) <span class="hljs-comment">//小于等于</span></code></pre></div>
+<h2 id="圆周率"><a href="#圆周率" class="headerlink" title="圆周率"></a>圆周率</h2><p>圆周率pi不需要记忆，因为由<code>cos(pi) = -1</code>可知<code>pi = arccos(-1)</code>。因此只需要把pi写成常量<code>acos(-1.0)</code>即可。</p>
+<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-keyword">const</span> <span class="hljs-built_in">double</span> Pi = acos(<span class="hljs-number">-1.0</span>);</code></pre></div>
+<h1 id="1、排序"><a href="#1、排序" class="headerlink" title="1、排序"></a>1、排序</h1><h2 id="1-1、选择排序（简单选择排序）"><a href="#1-1、选择排序（简单选择排序）" class="headerlink" title="1.1、选择排序（简单选择排序）"></a>1.1、选择排序（简单选择排序）</h2><p><strong>思想</strong>：从头到尾顺序扫描序列，选出<strong>最小</strong>的一个关键字，和<strong>待排序</strong>的第一个关键字交换，为一趟排序操作；接着从剩下的关键字中继续进行以上操作。复杂度为O(n^2)。</p>
+<table>
+    <tr>
+    <th colspan="8"><center>无序</center></th>
+    </tr>
+    <tr>
+        <td>49</td>
+        <td>38</td>
+        <td>65</td>
+        <td>97</td>
+        <td>76</td>
+        <td>13</td>
+        <td>27</td>
+        <td><u>49</u></td>        
+</tr></table>
+进行第一趟简单选择排序后：
+<table>
+    <tr>
+    <th colspan="1"><center>有序</center></th>
+    <th colspan="7"><center>无序</center></th>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>38</td>
+        <td>65</td>
+        <td>97</td>
+        <td>76</td>
+        <td>49</td>
+        <td>27</td>
+        <td><u>49</u></td>       
+</tr></table>
+进行第二趟简单选择排序后：
+<table>
+    <tr>
+    <th colspan="2"><center>有序</center></th>
+    <th colspan="6"><center>无序</center></th>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>27</td>
+        <td>65</td>
+        <td>97</td>
+        <td>76</td>
+        <td>49</td>
+        <td>38</td>
+        <td><u>49</u></td>       
+</tr></table>
+<div class="hljs"><pre><code class="hljs C"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">selectSort</span><span class="hljs-params">(ElemType A[], <span class="hljs-keyword">int</span> n)</span></span>&#123;
+	<span class="hljs-keyword">int</span> i,j,k,temp;
+	<span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; n; ++i)&#123;
+		k = i;
+        <span class="hljs-keyword">for</span>(j = i+<span class="hljs-number">1</span>; j &lt; n; ++j)&#123;
+            <span class="hljs-keyword">if</span>(A[k] &gt; A[j]) &#123;
+            k = j;
+        &#125;
+        temp = A[i];
+        A[i] = A[k];
+        A[k] = temp;
+    &#125;
+&#125;</code></pre></div>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "6kGBIHVkN1srcyRlkJzj74Ml-gzGzoHsz",
+          app_key: "Kh9FNmfHA3Rg81Btju7k0OBI",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: true,
+          serverURLs: "",
+        });
+      });
+    }
+    createObserver(loadValine, 'vcomments');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
 
               </div>
-            </div>
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -437,10 +617,10 @@
       }
 
       // 如果是文章，请求文章的浏览数，并自增
-      if ('false' === 'true') {
+      if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/tags/Fluid%EF%BC%8Cpicgo%EF%BC%8Ctypora/index.html');
+          var target = decodeURI('/year07031543ckcq6mvj3000oa2va6hk3b0l7');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -502,6 +682,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -509,7 +714,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - Fluid，picgo，typora&nbsp;",
+        "算法笔记(一)&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 90,
@@ -523,6 +728,21 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
 
 
 
@@ -538,9 +758,62 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 
