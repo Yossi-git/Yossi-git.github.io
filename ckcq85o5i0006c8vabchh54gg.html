@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Yossi">
   <meta name="keywords" content="">
-  <title>Git常用指令 - YoX</title>
+  <title>个人博客网站搭建教程 - YoX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-11 15:43">
-      2020年7月11日 下午
+    <time datetime="2020-06-30 12:28">
+      2020年6月30日 中午
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      906 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      10
        分钟
     </span>
   
@@ -213,212 +213,46 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年7月14日 下午
+                  本文最后更新于：2020年7月3日 下午
                 
               </p>
             
             <article class="markdown-body">
-              <p>这篇文章，我把那些命令都分类总结了一下（当然，是参考别人的分类的），这些总结大部分来自于我买的一个 Git 鼠标垫，主要是为了以后自己忘记了方便查找。</p>
-<a id="more"></a>
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&#8195;&#8195;最开始是在简书、CSDN、博客园写文章和记笔记，但是有个帖子莫名其妙被删了，加上网站现在的广告太多了，页面很乱很难看，于是就打算自己搭建一个自己的博客网站，拥有所有权，还可以自己定制网站风格。</p>
+<p>&#8195;&#8195;基本原理是：使用Hexo框架生成一个静态页面，Push到GitHub Page、Gitee Pages、Coding Pages上去部署在网络上，在解析到自己购买的域名下，就可以分享给其他人访问了。</p>
+<p>&#8195;&#8195;采用三线部署的原因：GitHub服务器在美国，国内访问速度很慢，国内最快的是Gitee但是想要解析到自定义域名和自动部署都需要花钱，本着白嫖绝不多花钱的心态，Gitee就当作一个备用和备份，国内线路就使用Coding。</p>
+<p>&#8195;&#8195;本来想完完整整自己写教程的，但是太懒了，拖了几天还没开始写，又不想一个个截图，那就直接放链接吧（狗头.png）</p>
+<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><p>&#8195;&#8195;推荐使用<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">vscode</a>操作。</p>
+<p>&#8195;&#8195;1.<a href="https://zhuanlan.zhihu.com/p/26625249?utm_source=qq&utm_medium=social" target="_blank" rel="noopener">Hexo+GitHub搭建个人网站详细教程</a><strong>注意：仓库名字要和owner名一致才行，如图</strong><img src="https://gitee.com/yossi/picture/raw/master/img/20200701191959.png" srcset="/img/loading.gif" alt="image-20200701191957183"><strong>先不要解析域名，因为这里会有个坑，等coding解析了再去解析github。</strong></p>
+<p>&#8195;&#8195;2.主题推荐Fluid<a href="https://hexo.fluid-dev.com/docs/guide" target="_blank" rel="noopener">搭配完整配置和定制教程</a></p>
+<p>&#8195;&#8195;终端命令行cd进入到blog文件夹：</p>
+<div class="hljs"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/fluid-dev/hexo-theme-fluid.git themes/fluid</code></pre></div>
 
-<h2 id="一、Git-配置相关"><a href="#一、Git-配置相关" class="headerlink" title="一、Git 配置相关"></a>一、Git 配置相关</h2><p>如果你首次使用 Git，那刚开始首先是需要配置各种身份信息的，这样当你提交相关任务的时候，别人才能知道这个 commit 是谁提交的。</p>
-<h4 id="（1）、Git-最小配置"><a href="#（1）、Git-最小配置" class="headerlink" title="（1）、Git 最小配置"></a>（1）、Git 最小配置</h4><p>1、配置全局账户，也就是该账户对所有的 Git 仓库都有效</p>
-<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global user.name <span class="hljs-string">'你的账户名称'</span>
-git<span class="hljs-built_in"> config </span>--global user.email <span class="hljs-string">'你的 Email'</span></code></pre></div>
+<p>&#8195;&#8195;3.<a href="https://www.aliyun.com/" target="_blank" rel="noopener">阿里云购买域名</a>建议购买top域名，第一年6元，不需要专属域名的可以不忙购买；</p>
+<p>&#8195;&#8195;4.部署到<a href="https://coding.net/" target="_blank" rel="noopener">Coding</a>上去，<a href="https://blog.wubin.design/archives/43.html" target="_blank" rel="noopener">新版coding搭建个人博客教程</a>只看前三步。</p>
+<p>&#8195;&#8195;5.部署到<a href="https://gitee.com/" target="_blank" rel="noopener">Gitee</a>，操作过程和GitHub是一样的，设置SSH–&gt;建仓库(记住仓库名字要和owner一致)</p>
+<p>&#8195;&#8195;6.打开blog文件夹下的<strong>_config.yml</strong>文件，拉到最下面，修改配置如下：</p>
+<div class="hljs"><pre><code class="hljs crmsh">deploy:
+  <span class="hljs-keyword">type</span>: git
+  repo: 
+    github: 你的github clone地址,<span class="hljs-literal">master</span>
+    coding: 你的Coding clone地址,<span class="hljs-literal">master</span>
+    gitee: 你的gitee clone地址,<span class="hljs-literal">master</span></code></pre></div>
 
-<p>2、配置局部账户，也就是该账户只对当前 Git 仓库有效</p>
-<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--local user.name <span class="hljs-string">'你的账户名称'</span> 
-git<span class="hljs-built_in"> config </span>--local user.email <span class="hljs-string">'你的 Email'</span></code></pre></div>
-
-<p>注意，不同点就是一个参数是 global（全局），一个是 local(本地)</p>
-<h4 id="（2）、查看相关配置情况"><a href="#（2）、查看相关配置情况" class="headerlink" title="（2）、查看相关配置情况"></a>（2）、查看相关配置情况</h4><p>配置了之后，显然有时候是需要查看我们当前配置的相关情况的，可以使用如下命令</p>
-<p>1、查看 global 类型的配置情况</p>
-<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global --list</code></pre></div>
-
-<p>2、查看某个仓库下的配置情况</p>
-<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--local --list</code></pre></div>
-
-<h2 id="二、本地基本操作"><a href="#二、本地基本操作" class="headerlink" title="二、本地基本操作"></a>二、本地基本操作</h2><p>这部分命令有点多，也是使用的最频繁的命令了，待我一一列举出来，建议收藏</p>
-<h4 id="（1）、基本操作"><a href="#（1）、基本操作" class="headerlink" title="（1）、基本操作"></a>（1）、基本操作</h4><p>1、查看变更情况</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git status</span></code></pre></div>
-
-<p>2、查看当前工作在哪个分支上</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-v</code></pre></div>
-
-<p>3、切换到指定分支</p>
-<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> checkout 指定分支的名称</code></pre></div>
-
-<p>4、把<strong>当前目录及其子目录</strong>下所有变更都加入到<strong>暂存区</strong></p>
-<div class="hljs"><pre><code class="hljs avrasm">git <span class="hljs-keyword">add</span> . // 注意，<span class="hljs-keyword">add</span> 后面是一个 <span class="hljs-string">'.'</span>；</code></pre></div>
-
-<p>5、把仓库内<strong>所有</strong>变更都假如到暂存区</p>
-<div class="hljs"><pre><code class="hljs dockerfile">git <span class="hljs-keyword">add</span><span class="bash"> -A</span></code></pre></div>
-
-<p>6、把指定文件添加到暂存区</p>
-<div class="hljs"><pre><code class="hljs routeros">git <span class="hljs-builtin-name">add</span> 文件1 文件2 <span class="hljs-built_in">..</span>. 文件n</code></pre></div>
-
-<p>7、创建正式的 commit，也就是把当前的数据提交上去</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git commit</span></code></pre></div>
-
-<h4 id="（二）、比较差异"><a href="#（二）、比较差异" class="headerlink" title="（二）、比较差异"></a>（二）、比较差异</h4><p>1、比较某文件工作区和暂存区的差异</p>
-<div class="hljs"><pre><code class="hljs maxima">git <span class="hljs-built_in">diff</span> 某文件</code></pre></div>
-
-<p>2、比较某文件暂存区和 HEAD 的差异</p>
-<div class="hljs"><pre><code class="hljs mipsasm">git <span class="hljs-keyword">diff </span>--<span class="hljs-keyword">cache </span>某文件</code></pre></div>
-
-<p>3、比较工作区和暂存区的所有差异</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git diff</span></code></pre></div>
-
-<p>4、比较暂存区和 HEAD 的所有差异</p>
-<div class="hljs"><pre><code class="hljs ada">git diff <span class="hljs-comment">--cache</span></code></pre></div>
-
-<h4 id="（3）、暂存区与工作区之间回滚"><a href="#（3）、暂存区与工作区之间回滚" class="headerlink" title="（3）、暂存区与工作区之间回滚"></a>（3）、暂存区与工作区之间回滚</h4><p>1、把工作区指定文件恢复成和暂存区一样</p>
-<div class="hljs"><pre><code class="hljs angelscript">git checkout 文件<span class="hljs-number">1</span> 文件<span class="hljs-number">2</span> ... 文件n</code></pre></div>
-
-<p>2、把暂存区指定文件回复和 HEAD 一样</p>
-<div class="hljs"><pre><code class="hljs angelscript">git reset 文件<span class="hljs-number">1</span> 文件<span class="hljs-number">2</span> ... 文件n</code></pre></div>
-
-<p>3、把暂存区和工作区所有文件恢复成和 HEAD 一样</p>
-<div class="hljs"><pre><code class="hljs pgsql">git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--hard</span></code></pre></div>
-
-<p>4、用 difftool 比较任意两个 commit 的差异</p>
-<div class="hljs"><pre><code class="hljs mipsasm">git <span class="hljs-keyword">difftool </span>commit1 commit2</code></pre></div>
-
-<blockquote>
-<p>注意，从工作区回滚到暂存区则用 checkout ，否则用 reset</p>
-</blockquote>
-<h4 id="（四）、其他"><a href="#（四）、其他" class="headerlink" title="（四）、其他"></a>（四）、其他</h4><p>查看哪些文件没有被 Git 管控</p>
-<div class="hljs"><pre><code class="hljs livecodeserver">git ls-<span class="hljs-built_in">files</span> <span class="hljs-comment">--others</span></code></pre></div>
-
-<h2 id="三、加塞临时任务处理"><a href="#三、加塞临时任务处理" class="headerlink" title="三、加塞临时任务处理"></a>三、加塞临时任务处理</h2><p>1、把未处理完的变更先保存到 stash 中</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git stash</span></code></pre></div>
-
-<p>2、临时任务处理完后继续之前的工作</p>
-<div class="hljs"><pre><code class="hljs maxima">git stash <span class="hljs-built_in">pop</span> // <span class="hljs-built_in">pop</span> 相当于栈的出栈和入栈一样，把之前的任务弹出来
-或者
-git stash <span class="hljs-built_in">apply</span> // 和 <span class="hljs-built_in">pop</span> 不同的是， <span class="hljs-built_in">apply</span> 相当于从栈顶把任务取出来，但是不过从栈中把任务移除</code></pre></div>
-
-<p>3、查看所有的 stash</p>
-<div class="hljs"><pre><code class="hljs applescript">git stash <span class="hljs-built_in">list</span></code></pre></div>
-
-<p>4、取回某次 stash 的变更</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> stash <span class="hljs-keyword">pop </span>stash <span class="hljs-comment">@&#123;数字n&#125;</span></code></pre></div>
-
-<h2 id="四、修改个人分支历史"><a href="#四、修改个人分支历史" class="headerlink" title="四、修改个人分支历史"></a>四、修改个人分支历史</h2><p>我们的仓库的内容每次变更执行 commit 的时候，都会生成一个新的 commit，不过有时候，我们不想产生新的 commit，而是想要通过修改之前的 commit 来变更仓库的内容，那么就可以使用如下命令了</p>
-<p>1、修改最后一次 commit</p>
-<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-number">1</span>、在工作区中修改文件
-<span class="hljs-number">2</span>、git add
-<span class="hljs-number">3</span>、git commit --amend</code></pre></div>
-
-<p>2|、修改中间的 commit(假设代号为 X)</p>
-<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-number">1.</span> git rebase -i X前面的一个 commit 的 id
-<span class="hljs-number">2.</span> 在工作区修改文件
-<span class="hljs-number">3.</span> git add
-<span class="hljs-number">4.</span> git rebase --contiue</code></pre></div>
-
-<h2 id="五、查看变更日志等"><a href="#五、查看变更日志等" class="headerlink" title="五、查看变更日志等"></a>五、查看变更日志等</h2><p>1、当前分支各个 commit 用一行显示</p>
-<div class="hljs"><pre><code class="hljs applescript">git <span class="hljs-built_in">log</span> <span class="hljs-comment">--online</span></code></pre></div>
-
-<p>2、显示最近的 n 个 commit</p>
-<div class="hljs"><pre><code class="hljs excel">git <span class="hljs-built_in">log</span> -<span class="hljs-built_in">n</span></code></pre></div>
-
-<p>3、用图示显示所有的分支历史</p>
-<div class="hljs"><pre><code class="hljs brainfuck"><span class="hljs-comment">git</span> <span class="hljs-comment">log</span> --<span class="hljs-comment">online</span> --<span class="hljs-comment">graph</span> --<span class="hljs-comment">all</span></code></pre></div>
-
-<p>4、查看涉及到某文件变更的所有 commit</p>
-<div class="hljs"><pre><code class="hljs 1c">git <span class="hljs-built_in">log</span> 某文件</code></pre></div>
-
-<p>5、某文件各行最后修改对应的 commit 以及作者</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">blame </span>某文件</code></pre></div>
-
-<h2 id="六、分支与标签"><a href="#六、分支与标签" class="headerlink" title="六、分支与标签"></a>六、分支与标签</h2><h4 id="1、创建新分支"><a href="#1、创建新分支" class="headerlink" title="1、创建新分支"></a>1、创建新分支</h4><p>基于当前分支创建新分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>新分支</code></pre></div>
-
-<p>基于指定分支创建新分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>新分支 已有分支</code></pre></div>
-
-<p>基于某个 commit 创建分支</p>
-<div class="hljs"><pre><code class="hljs sql">git branch 新分支 某个 <span class="hljs-keyword">commit</span> 的<span class="hljs-keyword">id</span></code></pre></div>
-
-<p>创建分支并且切换到该分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> chechout -<span class="hljs-keyword">b </span>新分支</code></pre></div>
-
-<h4 id="2、列出分支"><a href="#2、列出分支" class="headerlink" title="2、列出分支"></a>2、列出分支</h4><p>列出本地分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-v</code></pre></div>
-
-<p>列出本地和远端分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-av</code></pre></div>
-
-<p>列出远端所有分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-rv</code></pre></div>
-
-<p>列出名称符号某样式的远端分支</p>
-<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> branch -rv -l <span class="hljs-string">'某样式'</span></code></pre></div>
-
-<h4 id="3、删除分支"><a href="#3、删除分支" class="headerlink" title="3、删除分支"></a>3、删除分支</h4><p>安全删除本地某分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-d 要删除的分支</code></pre></div>
-
-<p>强行删除本地分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-D 要删除的分支</code></pre></div>
-
-<p>删除已合并到 master 分支的所有本地分支</p>
-<div class="hljs"><pre><code class="hljs crmsh">git branch --merged <span class="hljs-keyword">master</span> <span class="hljs-title">| grep</span> -v '^\*\| <span class="hljs-literal">master</span>' | xargs -n <span class="hljs-number">1</span> git branch -d</code></pre></div>
-
-<p>删除远端 origin 已不存在的所有本地分支</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git remote prune origin</span></code></pre></div>
-
-<h4 id="4、打标签"><a href="#4、打标签" class="headerlink" title="4、打标签"></a>4、打标签</h4><p>从 commit 打上标签</p>
-<div class="hljs"><pre><code class="hljs crmsh">git <span class="hljs-keyword">tag</span> <span class="hljs-title">标签名 commit</span> 的id</code></pre></div>
-
-<h2 id="七、两分支之间的集成"><a href="#七、两分支之间的集成" class="headerlink" title="七、两分支之间的集成"></a>七、两分支之间的集成</h2><p>1、把 A 分支合入到当前分支，且为 merge 创建 commit</p>
-<div class="hljs"><pre><code class="hljs cos">git <span class="hljs-keyword">merge</span> A分支</code></pre></div>
-
-<p>2、把 A 分支合入到 B 分支，且为 Merge 创建 commit</p>
-<div class="hljs"><pre><code class="hljs cos">git <span class="hljs-keyword">merge</span> A分支 B分支</code></pre></div>
-
-<p>3、把当前分支基于B分支做 rebase，以便把B分支合入到当前分支</p>
-<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> rebase B分支</code></pre></div>
-
-<p>4、把A分支基于B分支做rebase，以便把B分支合入到A分支</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> rebase <span class="hljs-keyword">B分支 </span>A分支</code></pre></div>
-
-<p>5、用 mergetool 解决冲突</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git mergetool</span></code></pre></div>
-
-<h2 id="八、和远端交互"><a href="#八、和远端交互" class="headerlink" title="八、和远端交互"></a>八、和远端交互</h2><p>1、列出所有 remote</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git remote -v</span></code></pre></div>
-
-<p>2、增加 remote</p>
-<div class="hljs"><pre><code class="hljs dockerfile">git remote <span class="hljs-keyword">add</span><span class="bash"> url地址</span></code></pre></div>
-
-<p>3、删除 remote</p>
-<div class="hljs"><pre><code class="hljs routeros">git remote <span class="hljs-builtin-name">remove</span> remote的名称</code></pre></div>
-
-<p>4、改变 remote 的name</p>
-<div class="hljs"><pre><code class="hljs coq">git remote <span class="hljs-built_in">rename</span> 旧名称 新名称</code></pre></div>
-
-<p>5、把远端所有分支和标签的变更都拉到本地</p>
-<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">git fetch remote</span></code></pre></div>
-
-<p>6、把远端分支的变更拉倒本地，且 merge 到本地分支</p>
-<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> pull remote名称 分支名</code></pre></div>
-
-<p>关于 pull 和 fetch 的区别不懂可以看这篇文章<a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247486636&idx=2&sn=b3d94e89b4bf2e7dba8b995dc694ccd8&scene=21#wechat_redirect" target="_blank" rel="noopener">从0学习Git：详解git pull和git fetch的区别</a></p>
-<p>7、把本地分支 push 到远端</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">push </span>remote名称 分支名</code></pre></div>
-
-<p>8、删除远端分支</p>
-<div class="hljs"><pre><code class="hljs gauss">git <span class="hljs-keyword">push</span> remote --<span class="hljs-keyword">delete</span> 远端分支名
-或者
-git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></div>
-
-<p>9、向远端提交指定标签</p>
-<div class="hljs"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">push </span>remote 标签名</code></pre></div>
-
-<p>10、向远端提交所有标签</p>
-<div class="hljs"><pre><code class="hljs ada">git push remote <span class="hljs-comment">--tags</span></code></pre></div>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果把这些命令掌握了，那么 git 就顺手拈来了，不过很多命令是比较容易忘的，所有还是比较需要一份 git 手册，以后用到的时候多查几次，多用几次命令，相信就能够记住了。</p>
+<p>&#8195;&#8195;7.现在去解析域名，记住先解析coding的申请获得证书后，再去添加解析GitHub的，具体操作在1、4步骤里面，不懂的再留言回答；</p>
+<h2 id="迷迷糊糊？简单介绍Hexo-init的这个文件夹，方便后续定制化"><a href="#迷迷糊糊？简单介绍Hexo-init的这个文件夹，方便后续定制化" class="headerlink" title="迷迷糊糊？简单介绍Hexo init的这个文件夹，方便后续定制化"></a>迷迷糊糊？简单介绍Hexo init的这个文件夹，方便后续定制化</h2><p><img src="https://gitee.com/yossi/picture/raw/master/img/20200701194940.png" srcset="/img/loading.gif" alt="image-20200701194933305"></p>
+<hr>
+<p>&#8195;&#8195;<strong>_config.yml</strong>是blog的整体配置文件，这种配置文件在<strong>themes–&gt;fluid</strong>里面也存在，定制自己的网站就是在这里修改相关配置；</p>
+<p>&#8195;&#8195;<strong>source</strong>存放各种资源，例如你的文章，插图等，<strong>source–&gt;_post</strong>存放的是你的文章，<strong>Hexo new “新文章”</strong>就会在此文件夹生成相应的<strong>.MD</strong>格式文件；</p>
+<p>&#8195;&#8195;<strong>public</strong>就是<code>Hexo g</code>生成的静态网页文件夹，<strong>Push</strong>到github仓库的就是这个文件夹；</p>
+<hr>
+<p><strong>themes–&gt;fluid</strong>下的文件</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200701195935.png" srcset="/img/loading.gif" alt="image-20200701195933635"></p>
+<p>&#8195;&#8195;<strong>_config.yml</strong>是主题的配置文件；</p>
+<p>&#8195;&#8195;<strong>layout</strong>是页面布局，定制化的时候修改页面布局在这里面的源文件修改代码；</p>
+<h1 id="typora-picgo-gitee搭建免费图床"><a href="#typora-picgo-gitee搭建免费图床" class="headerlink" title="typora+picgo+gitee搭建免费图床"></a>typora+picgo+gitee搭建免费图床</h1><h2 id="为什么需要图床？"><a href="#为什么需要图床？" class="headerlink" title="为什么需要图床？"></a>为什么需要图床？</h2><p>&#8195;&#8195;如果你把所有图片都放在<strong>source</strong>里面去调用的话，其他人加载你网页的时候就会特别慢，图床就是你的网络图库，在文章添加图片链接调用图片会加快网页加载速度。</p>
+<h2 id="白嫖教程开始"><a href="#白嫖教程开始" class="headerlink" title="白嫖教程开始"></a>白嫖教程开始</h2><p>上链接<a href="https://blog.csdn.net/wugenqiang/article/details/105644905" target="_blank" rel="noopener">typora+picgo+gitee白嫖图床</a></p>
+<p>超链接真是伟大的发明[旺柴]</p>
 
             </article>
             <hr>
@@ -428,7 +262,7 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
+                      <a class="hover-with-bg" href="/categories/hexo%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">hexo搭建教程</a>
                     
                   </div>
                 
@@ -436,7 +270,9 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Fluid%EF%BC%8Cpicgo%EF%BC%8Ctypora/">Fluid，picgo，typora</a>
                     
                   </div>
                 
@@ -447,9 +283,9 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/ckcq6tguv0010g9vag1xx6ela.html">
+                      <a href="/ckcq85o520000c8va7hgtbtbz.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">用四个命令总结 Git 的所有套路</span>
+                        <span class="hidden-mobile">C++的引用与指针的区别</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -457,8 +293,8 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
                   <div class="post-next col-6">
                     
                     
-                      <a href="/ckcq6tguz0015g9va6rxra978.html">
-                        <span class="hidden-mobile">【干货】40 张图解的TCP三次握手和四次挥手面试题</span>
+                      <a href="/ckcq85o5f0004c8va74737nuf.html">
+                        <span class="hidden-mobile">博客网站折腾日记（一）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -779,7 +615,7 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/ckcq6tgu10005g9vaduxbcu1y.html');
+          var target = decodeURI('/ckcq85o5i0006c8vabchh54gg.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -873,7 +709,7 @@ git <span class="hljs-keyword">push</span> remote:远端分支名</code></pre></
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Git常用指令&nbsp;",
+        "个人博客网站搭建教程&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 90,

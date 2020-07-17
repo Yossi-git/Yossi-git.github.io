@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Yossi">
   <meta name="keywords" content="">
-  <title>个人博客网站搭建教程 - YoX</title>
+  <title>批量删除QQ空间说说的JS脚本 - YoX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-06-30 12:28">
-      2020年6月30日 中午
+    <time datetime="2020-07-16 20:24">
+      2020年7月16日 晚上
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      906 字
+      640 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      9
        分钟
     </span>
   
@@ -213,46 +213,111 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年7月3日 下午
+                  本文最后更新于：2020年7月17日 晚上
                 
               </p>
             
             <article class="markdown-body">
-              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&#8195;&#8195;最开始是在简书、CSDN、博客园写文章和记笔记，但是有个帖子莫名其妙被删了，加上网站现在的广告太多了，页面很乱很难看，于是就打算自己搭建一个自己的博客网站，拥有所有权，还可以自己定制网站风格。</p>
-<p>&#8195;&#8195;基本原理是：使用Hexo框架生成一个静态页面，Push到GitHub Page、Gitee Pages、Coding Pages上去部署在网络上，在解析到自己购买的域名下，就可以分享给其他人访问了。</p>
-<p>&#8195;&#8195;采用三线部署的原因：GitHub服务器在美国，国内访问速度很慢，国内最快的是Gitee但是想要解析到自定义域名和自动部署都需要花钱，本着白嫖绝不多花钱的心态，Gitee就当作一个备用和备份，国内线路就使用Coding。</p>
-<p>&#8195;&#8195;本来想完完整整自己写教程的，但是太懒了，拖了几天还没开始写，又不想一个个截图，那就直接放链接吧（狗头.png）</p>
-<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><p>&#8195;&#8195;推荐使用<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">vscode</a>操作。</p>
-<p>&#8195;&#8195;1.<a href="https://zhuanlan.zhihu.com/p/26625249?utm_source=qq&utm_medium=social" target="_blank" rel="noopener">Hexo+GitHub搭建个人网站详细教程</a><strong>注意：仓库名字要和owner名一致才行，如图</strong><img src="https://gitee.com/yossi/picture/raw/master/img/20200701191959.png" srcset="/img/loading.gif" alt="image-20200701191957183"><strong>先不要解析域名，因为这里会有个坑，等coding解析了再去解析github。</strong></p>
-<p>&#8195;&#8195;2.主题推荐Fluid<a href="https://hexo.fluid-dev.com/docs/guide" target="_blank" rel="noopener">搭配完整配置和定制教程</a></p>
-<p>&#8195;&#8195;终端命令行cd进入到blog文件夹：</p>
-<div class="hljs"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/fluid-dev/hexo-theme-fluid.git themes/fluid</code></pre></div>
+              <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>这个脚本是从当前页开始删除说说，自动跳转<code>下一页</code>，所以先去需要删除的起始页，再点击<code>删除所有说说按钮</code>，如果使用<code>自动跳转到说说标签</code>会从第一页开始删除，请确认好删除的范围，不然删掉了就找不回来了。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>建议使用谷歌的<code>chrome</code>浏览器，进入到空间的说说页面，按键盘的<code>F12</code>，点击进入<code>console</code>控制台，把下面的代码复制进去，回车运行。</p>
+<div class="hljs"><pre><code class="hljs js">addFloatButton(<span class="hljs-string">'删除所有说说'</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+	<span class="hljs-keyword">this</span>.loop = !<span class="hljs-keyword">this</span>.loop
+	<span class="hljs-keyword">const</span> appIframe = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.app_canvas_frame'</span>)
+	<span class="hljs-keyword">if</span> (!appIframe) &#123;
+    	<span class="hljs-keyword">const</span> switchToTag = <span class="hljs-built_in">window</span>.confirm(<span class="hljs-string">'未切换到“说说”标签，是否立即切换？'</span>)
+    	<span class="hljs-keyword">if</span> (switchToTag) &#123;
+			<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'head-nav-menu&gt;.menu_item_311&gt;a'</span>).click()
+    	&#125; 
+    	<span class="hljs-keyword">else</span> &#123;
+      		<span class="hljs-keyword">return</span>
+    	&#125;
+  	&#125;
+  	<span class="hljs-keyword">const</span> iframeDocument = appIframe.contentWindow.document
+  	<span class="hljs-keyword">while</span> (<span class="hljs-keyword">this</span>.loop) &#123;
+    	clickAllEl(<span class="hljs-string">'.del_btn'</span>, iframeDocument)
+    	<span class="hljs-keyword">await</span> sleepAsync(<span class="hljs-number">500</span>) 			<span class="hljs-comment">//点击删除，延迟500ms</span>
+    	clickAllEl(<span class="hljs-string">'.qz_dialog_layer_sub'</span>)
+    	<span class="hljs-keyword">await</span> sleepAsync(<span class="hljs-number">1500</span>)			<span class="hljs-comment">//点击确定，延迟500ms</span>
+    	nextPage()
+   		<span class="hljs-keyword">await</span> sleepAsync(<span class="hljs-number">3000</span>)			<span class="hljs-comment">//翻页延迟3s，这个延迟最低2s，不然会跳页</span>
+  	&#125;
 
-<p>&#8195;&#8195;3.<a href="https://www.aliyun.com/" target="_blank" rel="noopener">阿里云购买域名</a>建议购买top域名，第一年6元，不需要专属域名的可以不忙购买；</p>
-<p>&#8195;&#8195;4.部署到<a href="https://coding.net/" target="_blank" rel="noopener">Coding</a>上去，<a href="https://blog.wubin.design/archives/43.html" target="_blank" rel="noopener">新版coding搭建个人博客教程</a>只看前三步。</p>
-<p>&#8195;&#8195;5.部署到<a href="https://gitee.com/" target="_blank" rel="noopener">Gitee</a>，操作过程和GitHub是一样的，设置SSH–&gt;建仓库(记住仓库名字要和owner一致)</p>
-<p>&#8195;&#8195;6.打开blog文件夹下的<strong>_config.yml</strong>文件，拉到最下面，修改配置如下：</p>
-<div class="hljs"><pre><code class="hljs crmsh">deploy:
-  <span class="hljs-keyword">type</span>: git
-  repo: 
-    github: 你的github clone地址,<span class="hljs-literal">master</span>
-    coding: 你的Coding clone地址,<span class="hljs-literal">master</span>
-    gitee: 你的gitee clone地址,<span class="hljs-literal">master</span></code></pre></div>
 
-<p>&#8195;&#8195;7.现在去解析域名，记住先解析coding的申请获得证书后，再去添加解析GitHub的，具体操作在1、4步骤里面，不懂的再留言回答；</p>
-<h2 id="迷迷糊糊？简单介绍Hexo-init的这个文件夹，方便后续定制化"><a href="#迷迷糊糊？简单介绍Hexo-init的这个文件夹，方便后续定制化" class="headerlink" title="迷迷糊糊？简单介绍Hexo init的这个文件夹，方便后续定制化"></a>迷迷糊糊？简单介绍Hexo init的这个文件夹，方便后续定制化</h2><p><img src="https://gitee.com/yossi/picture/raw/master/img/20200701194940.png" srcset="/img/loading.gif" alt="image-20200701194933305"></p>
-<hr>
-<p>&#8195;&#8195;<strong>_config.yml</strong>是blog的整体配置文件，这种配置文件在<strong>themes–&gt;fluid</strong>里面也存在，定制自己的网站就是在这里修改相关配置；</p>
-<p>&#8195;&#8195;<strong>source</strong>存放各种资源，例如你的文章，插图等，<strong>source–&gt;_post</strong>存放的是你的文章，<strong>Hexo new “新文章”</strong>就会在此文件夹生成相应的<strong>.MD</strong>格式文件；</p>
-<p>&#8195;&#8195;<strong>public</strong>就是<code>Hexo g</code>生成的静态网页文件夹，<strong>Push</strong>到github仓库的就是这个文件夹；</p>
-<hr>
-<p><strong>themes–&gt;fluid</strong>下的文件</p>
-<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200701195935.png" srcset="/img/loading.gif" alt="image-20200701195933635"></p>
-<p>&#8195;&#8195;<strong>_config.yml</strong>是主题的配置文件；</p>
-<p>&#8195;&#8195;<strong>layout</strong>是页面布局，定制化的时候修改页面布局在这里面的源文件修改代码；</p>
-<h1 id="typora-picgo-gitee搭建免费图床"><a href="#typora-picgo-gitee搭建免费图床" class="headerlink" title="typora+picgo+gitee搭建免费图床"></a>typora+picgo+gitee搭建免费图床</h1><h2 id="为什么需要图床？"><a href="#为什么需要图床？" class="headerlink" title="为什么需要图床？"></a>为什么需要图床？</h2><p>&#8195;&#8195;如果你把所有图片都放在<strong>source</strong>里面去调用的话，其他人加载你网页的时候就会特别慢，图床就是你的网络图库，在文章添加图片链接调用图片会加快网页加载速度。</p>
-<h2 id="白嫖教程开始"><a href="#白嫖教程开始" class="headerlink" title="白嫖教程开始"></a>白嫖教程开始</h2><p>上链接<a href="https://blog.csdn.net/wugenqiang/article/details/105644905" target="_blank" rel="noopener">typora+picgo+gitee白嫖图床</a></p>
-<p>超链接真是伟大的发明[旺柴]</p>
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nextPage</span> (<span class="hljs-params"></span>) </span>&#123;
+    	iframeDocument.querySelectorAll(<span class="hljs-string">'.mod_pagenav_main&gt;a'</span>).forEach(<span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> 		&#123;
+      		<span class="hljs-keyword">if</span> (el.innerText === <span class="hljs-string">'下一页'</span>) &#123;
+        		el.click()
+      		&#125;
+    	&#125;)
+  	&#125;
+&#125;)
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clickAllEl</span> (<span class="hljs-params">selector, parentNode = document</span>) </span>&#123;
+  	parentNode.querySelectorAll(selector).forEach(<span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> el.click())
+&#125;
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sleepAsync</span> (<span class="hljs-params">time</span>) </span>&#123;
+  	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> setTimeout(resolve, time))
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addFloatButton</span> (<span class="hljs-params">text, onclick</span>) </span>&#123;
+  	<span class="hljs-keyword">if</span> (!<span class="hljs-built_in">document</span>.addFloatButton) &#123;
+    	<span class="hljs-keyword">const</span> buttonContainer = <span class="hljs-built_in">document</span>.body
+        	.appendChild(<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>))
+        	.attachShadow(&#123; <span class="hljs-attr">mode</span>: <span class="hljs-string">'open'</span> &#125;)
+        buttonContainer.innerHTML = <span class="hljs-string">'&lt;style&gt;</span>
+<span class="hljs-string">        	:host&#123;</span>
+<span class="hljs-string">        		position:fixed;</span>
+<span class="hljs-string">        		top:3px;</span>
+<span class="hljs-string">        		left:3px;</span>
+<span class="hljs-string">        		z-index:2147483647;height:0</span>
+<span class="hljs-string">    			&#125;</span>
+<span class="hljs-string">        	#i&#123;display:none&#125;</span>
+<span class="hljs-string">            *&#123;	</span>
+<span class="hljs-string">                float:left;</span>
+<span class="hljs-string">              	margin:4px;</span>
+<span class="hljs-string">              	padding:1em;</span>
+<span class="hljs-string">              	outline:0;</span>
+<span class="hljs-string">              	border:0;</span>
+<span class="hljs-string">              	border-radius:5px;</span>
+<span class="hljs-string">              	background:#1e88e5;</span>
+<span class="hljs-string">              	box-shadow:0 1px 4pxrgba(0,0,0,.1);</span>
+<span class="hljs-string">    		  	color:#fff;</span>
+<span class="hljs-string">              	font-size:14px;</span>
+<span class="hljs-string">    		  	line-height:0;</span>
+<span class="hljs-string">    		  	transition:.3s&#125;:active&#123;background:#42a5f5;</span>
+<span class="hljs-string">                box-shadow:0 2px 5px rgba(0,0,0,.2)</span>
+<span class="hljs-string">              &#125;</span>
+<span class="hljs-string">			button:active&#123;</span>
+<span class="hljs-string">            	transition:0s&#125;:checked~button&#123;</span>
+<span class="hljs-string">                    visibility:hidden;</span>
+<span class="hljs-string">                    opacity:0;</span>
+<span class="hljs-string">                    transform:translateY(-3em)</span>
+<span class="hljs-string">                &#125;</span>
+<span class="hljs-string">				label&#123;</span>
+<span class="hljs-string">                    border-radius:50%</span>
+<span class="hljs-string">                &#125;</span>
+<span class="hljs-string">                :checked~label&#123;</span>
+<span class="hljs-string">                	opacity:.3;</span>
+<span class="hljs-string">                    transform:translateY(3em)</span>
+<span class="hljs-string">                &#125;</span>
+<span class="hljs-string">                &lt;/style&gt;&lt;input id=i type=checkbox&gt;&lt;label for=i&gt;&lt;/label&gt;'</span>       
+    	<span class="hljs-built_in">document</span>.addFloatButton = <span class="hljs-function">(<span class="hljs-params">text, onclick</span>) =&gt;</span> &#123;
+    		<span class="hljs-keyword">const</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>)
+      		button.textContent = text
+      		button.addEventListener(<span class="hljs-string">'click'</span>, onclick)
+      		<span class="hljs-keyword">return</span> buttonContainer.appendChild(button)
+    	&#125;
+  	&#125;
+  	<span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.addFloatButton(text, onclick)
+&#125;</code></pre></div>
+
+<p>在页面的左上角会出现这样的图标按钮：</p>
+<p><img src="https://gitee.com/yossi/picture/raw/master/img/20200717180339.png" srcset="/img/loading.gif" alt="image-20200717180133961"></p>
+<p>圆圈是<code>隐藏</code>和<code>显示</code>后面<code>“删除所有说说”</code>功能按钮的作用；</p>
+<p>点击一次<code>“删除所有说说”</code>开始运行脚本，会自动进行删除说说操作，不需要你去点击页面的确认按钮，这个运行速度可以调整，在代码注释里有标记。</p>
+<p>再次点击<code>“删除所有说说”</code>按钮，立刻停止脚本运行。</p>
+<p>删除几十页后会弹出验证码，这个时候就不能再删了，需要等待一个小时后再来。</p>
 
             </article>
             <hr>
@@ -262,7 +327,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/hexo%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">hexo搭建教程</a>
+                      <a class="hover-with-bg" href="/categories/%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7/">脚本工具</a>
                     
                   </div>
                 
@@ -270,9 +335,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Fluid%EF%BC%8Cpicgo%EF%BC%8Ctypora/">Fluid，picgo，typora</a>
+                      <a class="hover-with-bg" href="/tags/JS/">JS</a>
                     
                   </div>
                 
@@ -283,18 +346,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/ckcq6tgtp0000g9va66epc4g2.html">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">C++的引用与指针的区别</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/ckcq6tgtv0001g9va4n3kf588.html">
-                        <span class="hidden-mobile">博客网站折腾日记（一）</span>
+                      <a href="/ckcq85o6n001jc8va804n8und.html">
+                        <span class="hidden-mobile">写给大忙人看的操作系统</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -615,7 +672,7 @@
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/ckcq6tgu00004g9va7qlf7zus.html');
+          var target = decodeURI('/ckcq85o5g0005c8va5v6nd9b1.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -709,7 +766,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "个人博客网站搭建教程&nbsp;",
+        "批量删除QQ空间说说的JS脚本&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 90,

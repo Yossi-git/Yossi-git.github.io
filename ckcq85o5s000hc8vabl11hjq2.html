@@ -728,7 +728,7 @@ setsockopt(s, SOL_SOCKET, SO_LINGER, &amp;so_linger,<span class="hljs-keyword">s
 <li>未完成连接队列（SYN 队列）：接收到一个 SYN 建立连接请求，处于 SYN_RCVD 状态；</li>
 <li>已完成连接队列（Accpet 队列）：已完成 TCP 三次握手过程，处于 ESTABLISHED 状态；</li>
 </ul>
-<p><img src="/child/ckcq6tguz0015g9va6rxra978/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" alt="SYN 队列 与 Accpet 队列">SYN 队列 与 Accpet 队列</p>
+<p><img src="/child/ckcq85o5s000hc8vabl11hjq2/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" alt="SYN 队列 与 Accpet 队列">SYN 队列 与 Accpet 队列</p>
 <div class="hljs"><pre><code class="hljs perl"><span class="hljs-keyword">int</span> <span class="hljs-keyword">listen</span> (<span class="hljs-keyword">int</span> socketfd, <span class="hljs-keyword">int</span> backlog)</code></pre></div>
 
 <ul>
@@ -741,7 +741,7 @@ setsockopt(s, SOL_SOCKET, SO_LINGER, &amp;so_linger,<span class="hljs-keyword">s
 <p>accept 发送在三次握手的哪一步？</p>
 </blockquote>
 <p>我们先看看客户端连接服务端时，发送了什么？</p>
-<p><img src="/child/ckcq6tguz0015g9va6rxra978/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" alt="客户端连接服务端">客户端连接服务端</p>
+<p><img src="/child/ckcq85o5s000hc8vabl11hjq2/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" alt="客户端连接服务端">客户端连接服务端</p>
 <ul>
 <li>客户端的协议栈向服务器端发送了 SYN 包，并告诉服务器端当前发送序列号 client_isn，客户端进入 SYNC_SENT 状态；</li>
 <li>服务器端的协议栈收到这个包之后，和客户端进行 ACK 应答，应答的值为 client_isn+1，表示对 SYN 包 client_isn 的确认，同时服务器也发送一个 SYN 包，告诉客户端当前我的发送序列号为 server_isn，服务器端进入 SYNC_RCVD 状态；</li>
@@ -753,7 +753,7 @@ setsockopt(s, SOL_SOCKET, SO_LINGER, &amp;so_linger,<span class="hljs-keyword">s
 <p>客户端调用 close 了，连接是断开的流程是什么？</p>
 </blockquote>
 <p>我们看看客户端主动调用了 <code>close</code>，会发生什么？</p>
-<p><img src="/child/ckcq6tguz0015g9va6rxra978/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" alt="客户端调用 close 过程">客户端调用 close 过程</p>
+<p><img src="/child/ckcq85o5s000hc8vabl11hjq2/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" alt="客户端调用 close 过程">客户端调用 close 过程</p>
 <ul>
 <li>客户端调用 <code>close</code>，表明客户端没有数据需要发送了，则此时会向服务端发送 FIN 报文，进入 FIN_WAIT_1 状态；</li>
 <li>服务端接收到了 FIN 报文，TCP 协议栈会为 FIN 包插入一个文件结束符 <code>EOF</code> 到接收缓冲区中，应用程序可以通过 <code>read</code> 调用来感知这个 FIN 包。这个 <code>EOF</code> 会被<strong>放在已排队等候的其他已接收的数据之后</strong>，这就意味着服务端需要处理这种异常情况，因为 EOF 表示在该连接上再无额外数据到达。此时，服务端进入 CLOSE_WAIT 状态；</li>
@@ -799,7 +799,7 @@ setsockopt(s, SOL_SOCKET, SO_LINGER, &amp;so_linger,<span class="hljs-keyword">s
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/ckcq6tgu10005g9vaduxbcu1y.html">
+                      <a href="/ckcq85o590001c8va3mjscgrw.html">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Git常用指令</span>
                         <span class="visible-mobile">上一篇</span>
@@ -809,7 +809,7 @@ setsockopt(s, SOL_SOCKET, SO_LINGER, &amp;so_linger,<span class="hljs-keyword">s
                   <div class="post-next col-6">
                     
                     
-                      <a href="/ckcq6tgtp0000g9va66epc4g2.html">
+                      <a href="/ckcq85o520000c8va7hgtbtbz.html">
                         <span class="hidden-mobile">C++的引用与指针的区别</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -1131,7 +1131,7 @@ setsockopt(s, SOL_SOCKET, SO_LINGER, &amp;so_linger,<span class="hljs-keyword">s
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/ckcq6tguz0015g9va6rxra978.html');
+          var target = decodeURI('/ckcq85o5s000hc8vabl11hjq2.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
