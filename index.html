@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -120,8 +121,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -129,12 +136,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/index.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -173,21 +180,28 @@
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/08/28/13:24.html">LRU和LFU算法</a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/28/13:24.html">LRU和LFU算法</a>
+      </h1>
 
-      <a href="/2020/08/28/13:24.html" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/28/13:24.html">
           
-        
-        <div>LRU和LFU都是内存管理的页面置换算法，LRU，即：最近最少使用淘汰算法（Least Recently Used），LRU是淘汰最长时间没有被使用的页面；LFU，即：最不经常使用淘汰算法（Least Frequently Used），LFU是淘汰一段时间内，使用次数最少的页面。</div>
-      </a>
+          
+            
+          
+          LRU和LFU都是内存管理的页面置换算法，LRU，即：最近最少使用淘汰算法（Least Recently Used），LRU是淘汰最长时间没有被使用的页面；LFU，即：最不经常使用淘汰算法（Least Frequently Used），LFU是淘汰一段时间内，使用次数最少的页面。
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-28
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-28 13:24" pubdate>
+              2020-08-28
+            </time>
           </div>
         
         
@@ -213,7 +227,7 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
@@ -225,21 +239,28 @@
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/07/16/20:24.html">批量删除QQ空间说说的JS脚本</a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/16/20:24.html">批量删除QQ空间说说的JS脚本</a>
+      </h1>
 
-      <a href="/2020/07/16/20:24.html" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/16/20:24.html">
           
-        
-        <div>一键删除QQ空间说说的JS脚本，Del(年少的非主流)；</div>
-      </a>
+          
+            
+          
+          一键删除QQ空间说说的JS脚本，Del(年少的非主流)；
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-16
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-16 20:24" pubdate>
+              2020-07-16
+            </time>
           </div>
         
         
@@ -259,7 +280,7 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
@@ -271,21 +292,28 @@
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/07/13/15:24.html">写给大忙人看的操作系统</a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/13/15:24.html">写给大忙人看的操作系统</a>
+      </h1>
 
-      <a href="/2020/07/13/15:24.html" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/13/15:24.html">
           
-        
-        <div>快速了解操作系统</div>
-      </a>
+          
+            
+          
+          快速了解操作系统
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-13
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-13 15:24" pubdate>
+              2020-07-13
+            </time>
           </div>
         
         
@@ -305,7 +333,7 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
@@ -317,21 +345,28 @@
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/07/12/20:24.html">在线学习网站，刷题学习 Git/SQL/正则表达式</a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/12/20:24.html">在线学习网站，刷题学习 Git/SQL/正则表达式</a>
+      </h1>
 
-      <a href="/2020/07/12/20:24.html" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/12/20:24.html">
           
-        
-        <div>介绍几个平台，分别是学习 Git、SQL、正则表达式的在线练习平台。</div>
-      </a>
+          
+            
+          
+          介绍几个平台，分别是学习 Git、SQL、正则表达式的在线练习平台。
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-12
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-12 20:24" pubdate>
+              2020-07-12
+            </time>
           </div>
         
         
@@ -359,7 +394,7 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
@@ -371,21 +406,28 @@
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/07/12/19:24.html">工作流一目了然，用动图展示10大Git命令</a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/12/19:24.html">工作流一目了然，用动图展示10大Git命令</a>
+      </h1>
 
-      <a href="/2020/07/12/19:24.html" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/12/19:24.html">
           
-        
-        <div>git merge、git rebase、git reset、git revert、git fetch、git pull、git reflog……你知道这些 git 命令执行的究竟是什么任务吗？如果你还有些分不清楚，那千万不能错过这篇文章。在本文中，21 岁年轻软件顾问 Lydia Hallie 通过动图形式直观地介绍了这些常用 git 命令的工作过程，包你过目不忘。</div>
-      </a>
+          
+            
+          
+          git merge、git rebase、git reset、git revert、git fetch、git pull、git reflog……你知道这些 git 命令执行的究竟是什么任务吗？如果你还有些分不清楚，那千万不能错过这篇文章。在本文中，21 岁年轻软件顾问 Lydia Hallie 通过动图形式直观地介绍了这些常用 git 命令的工作过程，包你过目不忘。
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-12
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-12 19:24" pubdate>
+              2020-07-12
+            </time>
           </div>
         
         
@@ -405,7 +447,7 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
@@ -417,21 +459,28 @@
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/07/12/09:24.html">用四个命令总结 Git 的所有套路</a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/12/09:24.html">用四个命令总结 Git 的所有套路</a>
+      </h1>
 
-      <a href="/2020/07/12/09:24.html" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/12/09:24.html">
           
-        
-        <div>使用Git搞不明白的一个重要原因就是，命令的功能太杂，有时候一个需求可以用好几种命令解决，而且有的命令还有别名。这导致什么问题呢，我在网上找到的答案五花八门，竟然都能达成目的，难以找到规律，毫无套路可言。对于我这种不喜欢动脑子，只喜欢玩套路的人来说，简直不能接受。</div>
-      </a>
+          
+            
+          
+          使用Git搞不明白的一个重要原因就是，命令的功能太杂，有时候一个需求可以用好几种命令解决，而且有的命令还有别名。这导致什么问题呢，我在网上找到的答案五花八门，竟然都能达成目的，难以找到规律，毫无套路可言。对于我这种不喜欢动脑子，只喜欢玩套路的人来说，简直不能接受。
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-12
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-12 09:24" pubdate>
+              2020-07-12
+            </time>
           </div>
         
         
@@ -451,7 +500,7 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
@@ -463,21 +512,28 @@
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/07/11/15:43.html">Git常用指令</a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/11/15:43.html">Git常用指令</a>
+      </h1>
 
-      <a href="/2020/07/11/15:43.html" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/11/15:43.html">
           
-        
-        <div>这篇文章，我把那些命令都分类总结了一下（当然，是参考别人的分类的），这些总结大部分来自于我买的一个 Git 鼠标垫，主要是为了以后自己忘记了方便查找。</div>
-      </a>
+          
+            
+          
+          这篇文章，我把那些命令都分类总结了一下（当然，是参考别人的分类的），这些总结大部分来自于我买的一个 Git 鼠标垫，主要是为了以后自己忘记了方便查找。
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-11
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-11 15:43" pubdate>
+              2020-07-11
+            </time>
           </div>
         
         
@@ -497,7 +553,7 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
@@ -509,21 +565,28 @@
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/07/10/12:28.html">【干货】40 张图解的TCP三次握手和四次挥手面试题</a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/10/12:28.html">【干货】40 张图解的TCP三次握手和四次挥手面试题</a>
+      </h1>
 
-      <a href="/2020/07/10/12:28.html" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/10/12:28.html">
           
-        
-        <div>任 TCP 虐我千百遍，我仍待 TCP 如初恋。近40张图解被问千百遍的TCP三次握手和四次挥手面试题</div>
-      </a>
+          
+            
+          
+          任 TCP 虐我千百遍，我仍待 TCP 如初恋。近40张图解被问千百遍的TCP三次握手和四次挥手面试题
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-10
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-10 12:28" pubdate>
+              2020-07-10
+            </time>
           </div>
         
         
@@ -543,7 +606,7 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
@@ -555,21 +618,28 @@
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/07/03/09:24.html">C++的引用与指针的区别</a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/03/09:24.html">C++的引用与指针的区别</a>
+      </h1>
 
-      <a href="/2020/07/03/09:24.html" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/03/09:24.html">
           
-        
-        <div>C++中的引用(&)用法和实例，与指针有什么区别？</div>
-      </a>
+          
+            
+          
+          C++中的引用(&)用法和实例，与指针有什么区别？
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-03 09:24" pubdate>
+              2020-07-03
+            </time>
           </div>
         
         
@@ -589,7 +659,7 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
@@ -601,21 +671,28 @@
         </a>
       </div>
     
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/06/30/12:28.html">个人博客网站搭建教程</a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/06/30/12:28.html">个人博客网站搭建教程</a>
+      </h1>
 
-      <a href="/2020/06/30/12:28.html" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/06/30/12:28.html">
           
-        
-        <div>GitHub+Gitee+Coding三线部署，Typoora+picgo+gitee搭建免费图床</div>
-      </a>
+          
+            
+          
+          GitHub+Gitee+Coding三线部署，Typoora+picgo+gitee搭建免费图床
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-06-30
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-30 12:28" pubdate>
+              2020-06-30
+            </time>
           </div>
         
         
@@ -637,7 +714,7 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
 
@@ -699,52 +776,14 @@
   
 
   <footer class="mt-5">
-    <div class="text-center py-3">
-        <div>
-            <!-- <a href="https://hexo.io" target="_blank" rel="nofollow noopener"> -->
-            <span>@2020</span>
-            <i class="iconfont icon-love"></i>
-            <a href="https://github.com/Yossi-git" target="_blank" style="color:rgb(0, 119, 167);text-decoration:underline;" rel="nofollow noopener">Yossi</a>
-        </div>
-        <div>
-            <span>由</span>
-            <a href="https://hexo.io/zh-cn/" target="_blank" style="color:rgb(0, 180, 250);text-decoration:underline;" rel="nofollow noopener">Hexo</a>
-            <span>驱动｜主题-</span>
-            <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" style="color:rgb(0, 180, 250);text-decoration:underline;" rel="nofollow noopener">Fluid</a>
-        </div>
-        <div>
-            <span id="timeDate">载入天数...</span>
-            <span id="times">载入时分秒...</span>
-            <script>
-                var now = new Date();
-
-                function createtime() {
-                    var grt = new Date("06/28/2020 00:00:00"); //此处修改你的建站时间或者网站上线时间
-                    now.setTime(now.getTime() + 250);
-                    days = (now - grt) / 1000 / 60 / 60 / 24;
-                    dnum = Math.floor(days);
-                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
-                    hnum = Math.floor(hours);
-                    if (String(hnum).length == 1) {
-                        hnum = "0" + hnum;
-                    }
-                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-                    mnum = Math.floor(minutes);
-                    if (String(mnum).length == 1) {
-                        mnum = "0" + mnum;
-                    }
-                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-                    snum = Math.round(seconds);
-                    if (String(snum).length == 1) {
-                        snum = "0" + snum;
-                    }
-                    document.getElementById("timeDate").innerHTML = "本站已经安全运行&nbsp" + dnum + "&nbsp天";
-                    document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-                }
-                setInterval("createtime()", 250);
-            </script>
-        </div>
-        
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
   <div class="statistics">
     
     
@@ -771,11 +810,10 @@
   </div>
 
 
-            
+    
 
-                
-
-    </div>
+    
+  </div>
 </footer>
 
 <!-- SCRIPTS -->
@@ -1096,6 +1134,9 @@
   
 
   
+
+  
+
 
 
 

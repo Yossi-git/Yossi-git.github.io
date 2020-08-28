@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -120,8 +121,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -129,12 +136,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://gitee.com/yossi/picture/raw/master/img/20200714213043.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -175,7 +182,7 @@
     <div class="category row">
       <a
         class="category-item  list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckeduao8w0007klvahfbo5up2" role="tab" data-toggle="collapse" href="#collapse-ckeduao8w0007klvahfbo5up2"
+        id="heading-ckedulumb000bxavab78m158v" role="tab" data-toggle="collapse" href="#collapse-ckedulumb000bxavab78m158v"
         aria-expanded="true"
       >
         Git
@@ -188,8 +195,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckeduao8w0007klvahfbo5up2" class="collapse in show" role="tabpanel"
-       aria-labelledby="heading-ckeduao8w0007klvahfbo5up2">
+  <div id="collapse-ckedulumb000bxavab78m158v" class="collapse in show" role="tabpanel"
+       aria-labelledby="heading-ckedulumb000bxavab78m158v">
     
   
   
@@ -198,7 +205,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem  list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckeduao9r0014klvaamhyfcfw" role="tab" data-toggle="collapse" href="#collapse-ckeduao9r0014klvaamhyfcfw"
+        id="heading-ckedulun4001dxava8bnqfqip" role="tab" data-toggle="collapse" href="#collapse-ckedulun4001dxava8bnqfqip"
         aria-expanded="true"
       >
         SQL
@@ -211,8 +218,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckeduao9r0014klvaamhyfcfw" class="collapse in show" role="tabpanel"
-       aria-labelledby="heading-ckeduao9r0014klvaamhyfcfw">
+  <div id="collapse-ckedulun4001dxava8bnqfqip" class="collapse in show" role="tabpanel"
+       aria-labelledby="heading-ckedulun4001dxava8bnqfqip">
     
   
   
@@ -221,7 +228,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckeduao9w001fklvadex5aca3" role="tab" data-toggle="collapse" href="#collapse-ckeduao9w001fklvadex5aca3"
+        id="heading-ckedulun8001ixava5subfx6y" role="tab" data-toggle="collapse" href="#collapse-ckedulun8001ixava5subfx6y"
         aria-expanded="false"
       >
         正则表达式
@@ -234,8 +241,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckeduao9w001fklvadex5aca3" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckeduao9w001fklvadex5aca3">
+  <div id="collapse-ckedulun8001ixava5subfx6y" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckedulun8001ixava5subfx6y">
     
     
     
@@ -269,7 +276,7 @@
     <div class="category row">
       <a
         class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckeduao9f000nklva7fgqcgas" role="tab" data-toggle="collapse" href="#collapse-ckeduao9f000nklva7fgqcgas"
+        id="heading-ckedulumh000gxavafigz1iwn" role="tab" data-toggle="collapse" href="#collapse-ckedulumh000gxavafigz1iwn"
         aria-expanded="false"
       >
         hexo搭建教程
@@ -282,8 +289,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckeduao9f000nklva7fgqcgas" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckeduao9f000nklva7fgqcgas">
+  <div id="collapse-ckedulumh000gxavafigz1iwn" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckedulumh000gxavafigz1iwn">
     
     
     
@@ -311,44 +318,8 @@
     
     <div class="category row">
       <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckeduao8h0002klva9s5ha7e0" role="tab" data-toggle="collapse" href="#collapse-ckeduao8h0002klva9s5ha7e0"
-        aria-expanded="false"
-      >
-        C++
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/C/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse">
-        
-          
-  <div id="collapse-ckeduao8h0002klva9s5ha7e0" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckeduao8h0002klva9s5ha7e0">
-    
-    
-    
-      
-      
-        <a href="/2020/07/03/09:24.html" class="list-group-item list-group-item-action">
-          <span class="category-post">C++的引用与指针的区别</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    <div class="category row">
-      <a
         class="category-item  list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckeduao94000dklva7mtxd5af" role="tab" data-toggle="collapse" href="#collapse-ckeduao94000dklva7mtxd5af"
+        id="heading-ckedululv0002xava35xi3c82" role="tab" data-toggle="collapse" href="#collapse-ckedululv0002xava35xi3c82"
         aria-expanded="true"
       >
         算法
@@ -361,8 +332,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckeduao94000dklva7mtxd5af" class="collapse in show" role="tabpanel"
-       aria-labelledby="heading-ckeduao94000dklva7mtxd5af">
+  <div id="collapse-ckedululv0002xava35xi3c82" class="collapse in show" role="tabpanel"
+       aria-labelledby="heading-ckedululv0002xava35xi3c82">
     
   
   
@@ -371,7 +342,7 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckeduao9t0018klva488o26id" role="tab" data-toggle="collapse" href="#collapse-ckeduao9t0018klva488o26id"
+        id="heading-ckedulumm000nxava8npgemil" role="tab" data-toggle="collapse" href="#collapse-ckedulumm000nxava8npgemil"
         aria-expanded="false"
       >
         操作系统
@@ -384,8 +355,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckeduao9t0018klva488o26id" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckeduao9t0018klva488o26id">
+  <div id="collapse-ckedulumm000nxava8npgemil" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckedulumm000nxava8npgemil">
     
     
     
@@ -413,7 +384,43 @@
     <div class="category row">
       <a
         class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckeduao9a000jklva87q28bu4" role="tab" data-toggle="collapse" href="#collapse-ckeduao9a000jklva87q28bu4"
+        id="heading-ckedulum40007xavaegou8itu" role="tab" data-toggle="collapse" href="#collapse-ckedulum40007xavaegou8itu"
+        aria-expanded="false"
+      >
+        C++
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/C/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckedulum40007xavaegou8itu" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckedulum40007xavaegou8itu">
+    
+    
+    
+      
+      
+        <a href="/2020/07/03/09:24.html" class="list-group-item list-group-item-action">
+          <span class="category-post">C++的引用与指针的区别</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckedulumq000uxava1155h34m" role="tab" data-toggle="collapse" href="#collapse-ckedulumq000uxava1155h34m"
         aria-expanded="false"
       >
         计算机网络
@@ -426,8 +433,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckeduao9a000jklva87q28bu4" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckeduao9a000jklva87q28bu4">
+  <div id="collapse-ckedulumq000uxava1155h34m" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckedulumq000uxava1155h34m">
     
     
     
@@ -449,7 +456,7 @@
     <div class="category row">
       <a
         class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckeduao9v001aklvagz5wg4ds" role="tab" data-toggle="collapse" href="#collapse-ckeduao9v001aklvagz5wg4ds"
+        id="heading-ckedulun00019xava569iabgu" role="tab" data-toggle="collapse" href="#collapse-ckedulun00019xava569iabgu"
         aria-expanded="false"
       >
         脚本工具
@@ -462,8 +469,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckeduao9v001aklvagz5wg4ds" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckeduao9v001aklvagz5wg4ds">
+  <div id="collapse-ckedulun00019xava569iabgu" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckedulun00019xava569iabgu">
     
     
     
@@ -485,7 +492,7 @@
     <div class="category row">
       <a
         class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckeduaoae0023klvacfgihx60" role="tab" data-toggle="collapse" href="#collapse-ckeduaoae0023klvacfgihx60"
+        id="heading-ckeduluns0023xava37qw0usc" role="tab" data-toggle="collapse" href="#collapse-ckeduluns0023xava37qw0usc"
         aria-expanded="false"
       >
         操作系统
@@ -498,8 +505,8 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckeduaoae0023klvacfgihx60" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckeduaoae0023klvacfgihx60">
+  <div id="collapse-ckeduluns0023xava37qw0usc" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckeduluns0023xava37qw0usc">
     
     
     
@@ -561,52 +568,14 @@
   
 
   <footer class="mt-5">
-    <div class="text-center py-3">
-        <div>
-            <!-- <a href="https://hexo.io" target="_blank" rel="nofollow noopener"> -->
-            <span>@2020</span>
-            <i class="iconfont icon-love"></i>
-            <a href="https://github.com/Yossi-git" target="_blank" style="color:rgb(0, 119, 167);text-decoration:underline;" rel="nofollow noopener">Yossi</a>
-        </div>
-        <div>
-            <span>由</span>
-            <a href="https://hexo.io/zh-cn/" target="_blank" style="color:rgb(0, 180, 250);text-decoration:underline;" rel="nofollow noopener">Hexo</a>
-            <span>驱动｜主题-</span>
-            <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" style="color:rgb(0, 180, 250);text-decoration:underline;" rel="nofollow noopener">Fluid</a>
-        </div>
-        <div>
-            <span id="timeDate">载入天数...</span>
-            <span id="times">载入时分秒...</span>
-            <script>
-                var now = new Date();
-
-                function createtime() {
-                    var grt = new Date("06/28/2020 00:00:00"); //此处修改你的建站时间或者网站上线时间
-                    now.setTime(now.getTime() + 250);
-                    days = (now - grt) / 1000 / 60 / 60 / 24;
-                    dnum = Math.floor(days);
-                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
-                    hnum = Math.floor(hours);
-                    if (String(hnum).length == 1) {
-                        hnum = "0" + hnum;
-                    }
-                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-                    mnum = Math.floor(minutes);
-                    if (String(mnum).length == 1) {
-                        mnum = "0" + mnum;
-                    }
-                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-                    snum = Math.round(seconds);
-                    if (String(snum).length == 1) {
-                        snum = "0" + snum;
-                    }
-                    document.getElementById("timeDate").innerHTML = "本站已经安全运行&nbsp" + dnum + "&nbsp天";
-                    document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-                }
-                setInterval("createtime()", 250);
-            </script>
-        </div>
-        
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
   <div class="statistics">
     
     
@@ -633,11 +602,10 @@
   </div>
 
 
-            
+    
 
-                
-
-    </div>
+    
+  </div>
 </footer>
 
 <!-- SCRIPTS -->
@@ -958,6 +926,9 @@
   
 
   
+
+  
+
 
 
 
